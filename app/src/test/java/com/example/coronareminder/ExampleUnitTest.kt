@@ -1,4 +1,4 @@
-package com.example.coronareminder
+package com.theusmadev.coronareminder
 
 import org.junit.Test
 

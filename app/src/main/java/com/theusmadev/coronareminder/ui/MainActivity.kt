@@ -1,9 +1,9 @@
-package com.example.coronareminder.ui
+package com.theusmadev.coronareminder.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
-import com.example.coronareminder.R
+import com.theusmadev.coronareminder.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

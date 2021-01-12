@@ -1,4 +1,4 @@
-package com.example.coronareminder
+package com.theusmadev.coronareminder
 
 import android.app.Application
 
