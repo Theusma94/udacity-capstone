@@ -1,17 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.theusmadev.coronareminder.ui.dashboard.DashboardViewModel" />
+    </data>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DASHBOARD"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/world_stats_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="All the world"
+            android:textSize="32sp"
+            android:layout_marginTop="64dp"
+            android:layout_marginStart="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/world_confirmed_cases"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            android:text="@{String.valueOf(viewModel.coronaGlobal.confirmed)}"
+            app:layout_constraintStart_toStartOf="@+id/world_stats_label"
+            app:layout_constraintTop_toBottomOf="@+id/world_stats_label" />
+
+        <TextView
+            android:id="@+id/world_recovered_cases"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            android:text="@{String.valueOf(viewModel.coronaGlobal.recovered)}"
+            app:layout_constraintStart_toStartOf="@+id/world_stats_label"
+            app:layout_constraintTop_toBottomOf="@+id/world_confirmed_cases" />
+
+        <TextView
+            android:id="@+id/world_death_cases"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            android:text="@{String.valueOf(viewModel.coronaGlobal.deaths)}"
+            app:layout_constraintStart_toStartOf="@+id/world_stats_label"
+            app:layout_constraintTop_toBottomOf="@+id/world_recovered_cases" />
+
+        <TextView
+            android:id="@+id/country_stats_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:text="In Your country"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/world_stats_label" />
+
+        <TextView
+            android:id="@+id/country_confirmed_cases"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            android:text="@{String.valueOf(viewModel.coronaCountry.confirmed)}"
+            app:layout_constraintStart_toStartOf="@+id/country_stats_label"
+            app:layout_constraintTop_toBottomOf="@+id/country_stats_label" />
+
+        <TextView
+            android:id="@+id/country_recovered_cases"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            android:text="@{String.valueOf(viewModel.coronaCountry.recovered)}"
+            app:layout_constraintStart_toStartOf="@+id/country_stats_label"
+            app:layout_constraintTop_toBottomOf="@+id/country_confirmed_cases" />
+
+        <TextView
+            android:id="@+id/country_death_cases"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            android:text="@{String.valueOf(viewModel.coronaCountry.deaths)}"
+            app:layout_constraintStart_toStartOf="@+id/country_stats_label"
+            app:layout_constraintTop_toBottomOf="@+id/country_recovered_cases" />
+
+        <Spinner
+            android:id="@+id/spinner_country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/country_stats_label" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

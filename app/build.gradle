@@ -71,4 +71,11 @@ dependencies {
     implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
 
     implementation 'com.google.code.gson:gson:2.8.6'
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-scalars:$retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion"
+
+    implementation "androidx.preference:preference-ktx:$preferenceVersion"
 }

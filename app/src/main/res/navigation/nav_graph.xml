@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/dashboard_fragment"
-        android:name="com.theusmadev.coronareminder.ui.coronareminders.dashboard.DashboardFragment"
+        android:name="com.theusmadev.coronareminder.ui.dashboard.DashboardFragment"
         android:label="DashboardFragment" />
     <fragment
         android:id="@+id/favorites_fragment"
@@ -13,7 +13,7 @@
         android:label="FavoritesFragment" />
     <fragment
         android:id="@+id/settings_fragment"
-        android:name="com.theusmadev.coronareminder.ui.coronareminders.settings.SettingsFragment"
+        android:name="com.theusmadev.coronareminder.ui.settings.SettingsFragment"
         android:label="SettingsFragment" />
     <fragment
         android:id="@+id/reminders_fragment"
