@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    app:startDestination="@id/dashboard_fragment">
+
+    <fragment
+        android:id="@+id/dashboard_fragment"
+        android:name="com.theusmadev.coronareminder.ui.coronareminders.dashboard.DashboardFragment"
+        android:label="DashboardFragment" />
+    <fragment
+        android:id="@+id/favorites_fragment"
+        android:name="com.theusmadev.coronareminder.ui.coronareminders.reminderlist.favorites.FavoritesFragment"
+        android:label="FavoritesFragment" />
+    <fragment
+        android:id="@+id/settings_fragment"
+        android:name="com.theusmadev.coronareminder.ui.coronareminders.settings.SettingsFragment"
+        android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/reminders_fragment"
+        android:name="com.theusmadev.coronareminder.ui.coronareminders.reminderlist.RemindersFragment"
+        android:label="RemindersFragment" />
+
+
+</navigation>

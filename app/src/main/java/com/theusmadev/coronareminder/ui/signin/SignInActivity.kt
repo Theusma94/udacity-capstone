@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.theusmadev.coronareminder.R
 import com.theusmadev.coronareminder.databinding.ActivitySignInBinding
+import com.theusmadev.coronareminder.ui.coronareminders.CoronaRemindersActivity
 import com.theusmadev.coronareminder.ui.signup.SignUpActivity
 import org.koin.android.ext.android.inject
 
@@ -73,6 +74,7 @@ class SignInActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     Log.d("Teste", "signInWithCredential:success")
                     val user = viewModel.firebaseAuth.currentUser
+                    startActivity(Intent(this, CoronaRemindersActivity::class.java))
                 } else {
                     Log.w("Teste", "signInWithCredential:failure", task.exception)
                 }

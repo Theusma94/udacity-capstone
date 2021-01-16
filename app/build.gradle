@@ -69,4 +69,6 @@ dependencies {
     //Koin
     implementation "org.koin:koin-android:$koinVersion"
     implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
+
+    implementation 'com.google.code.gson:gson:2.8.6'
 }
