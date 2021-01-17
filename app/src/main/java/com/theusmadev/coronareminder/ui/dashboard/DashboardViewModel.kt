@@ -24,6 +24,7 @@ class DashboardViewModel (
     private val _showListCountries = MutableLiveData<List<String>>()
     val showListCountries: LiveData<List<String>> = _showListCountries
 
+
     @ExperimentalCoroutinesApi
     fun getCoronaInfo() {
         viewModelScope.launch {
@@ -45,7 +46,7 @@ class DashboardViewModel (
         if(countryChoosed.isNullOrEmpty()) {
             viewModelScope.launch {
                coronaRepository.countries.map {
-                   it.dropLast(1)
+                   it.dropLast(1).insertOnTop("Choose one country")
                }.collect {
                    _showListCountries.postValue(it)
                    Log.d("Teste",it.toString())
@@ -65,4 +66,11 @@ class DashboardViewModel (
         }
     }
 
+}
+
+fun <T> List<T>.insertOnTop(item: T): List<T> {
+    val newList = mutableListOf<T>()
+    newList.add(item)
+    newList.addAll(this)
+    return newList
 }

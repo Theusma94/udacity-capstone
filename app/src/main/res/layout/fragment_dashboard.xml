@@ -12,16 +12,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/refresh_cases"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintVertical_bias=".1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_refresh" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/world_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="world_confirmed_cases,world_death_cases,world_recovered_cases,world_stats_label"/>
+
         <TextView
             android:id="@+id/world_stats_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
             android:text="All the world"
             android:textSize="32sp"
-            android:layout_marginTop="64dp"
-            android:layout_marginStart="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/refresh_cases"
+            app:layout_constraintVertical_bias=".1" />
 
         <TextView
             android:id="@+id/world_confirmed_cases"
@@ -52,6 +70,12 @@
             android:text="@{String.valueOf(viewModel.coronaGlobal.deaths)}"
             app:layout_constraintStart_toStartOf="@+id/world_stats_label"
             app:layout_constraintTop_toBottomOf="@+id/world_recovered_cases" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/country_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="country_confirmed_cases,country_death_cases,country_recovered_cases,country_stats_label"/>
 
         <TextView
             android:id="@+id/country_stats_label"
@@ -98,6 +122,7 @@
             android:id="@+id/spinner_country"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -86,6 +86,7 @@ class SignInActivity : AppCompatActivity() {
         val user = viewModel.firebaseAuth.currentUser
         if(user != null) {
             Log.d("Teste","user ${user.email} logged")
+            startActivity(Intent(this, CoronaRemindersActivity::class.java))
         } else {
             Log.d("Teste", "user not logged")
         }

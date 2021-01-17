@@ -1,9 +1,12 @@
 package com.theusmadev.coronareminder.ui.dashboard
 
+import android.animation.Animator
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
@@ -36,29 +39,34 @@ class DashboardFragment : Fragment() {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
 
             override fun onItemSelected(
-                parentView: AdapterView<*>?,
-                selectedItemView: View,
-                position: Int,
-                id: Long
+                    parentView: AdapterView<*>?,
+                    selectedItemView: View,
+                    position: Int,
+                    id: Long
             ) {
-                binding.countryConfirmedCases.visibility = View.VISIBLE
-                binding.countryDeathCases.visibility = View.VISIBLE
-                binding.countryRecoveredCases.visibility = View.VISIBLE
-                binding.countryStatsLabel.visibility = View.VISIBLE
+                if(position > 0) {
+                    binding.countryGroup.visibility = View.VISIBLE
+                    binding.spinnerCountry.visibility = View.GONE
 
-                val selected = (selectedItemView as TextView).text
-                viewModel.getCountryCoronaInfo(selected.toString())
+                    val selected = (selectedItemView as TextView).text
+                    viewModel.getCountryCoronaInfo(selected.toString())
+                }
             }
+        }
+
+        binding.refreshCases.setOnClickListener {
+            val animator = ObjectAnimator.ofFloat(binding.refreshCases, View.ROTATION, -360f, 0f)
+            animator.duration = 1500
+            animator.repeatCount = Animation.INFINITE
+            animator.start()
         }
         return binding.root
     }
 
     private fun setupObservers() {
         viewModel.showListCountries.observe(viewLifecycleOwner, Observer {
-            binding.countryConfirmedCases.visibility = View.GONE
-            binding.countryDeathCases.visibility = View.GONE
-            binding.countryRecoveredCases.visibility = View.GONE
-            binding.countryStatsLabel.visibility = View.GONE
+            binding.countryGroup.visibility = View.GONE
+            binding.spinnerCountry.visibility = View.VISIBLE
 
             val adapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_item, it)
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
