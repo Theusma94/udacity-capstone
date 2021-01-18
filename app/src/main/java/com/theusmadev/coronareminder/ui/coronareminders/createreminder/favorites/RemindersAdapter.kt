@@ -1,4 +1,4 @@
-package com.theusmadev.coronareminder.ui.coronareminders
+package com.theusmadev.coronareminder.ui.coronareminders.createreminder.favorites
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

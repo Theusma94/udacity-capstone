@@ -8,6 +8,7 @@ import kotlinx.coroutines.withContext
 
 class ReminderRepository(val coronaDatabase: CoronaDatabase) {
 
+    val allReminders = coronaDatabase.remindersDao.getReminders()
 
     suspend fun saveFavoriteReminder(item: ReminderDataItem, dispatcher: CoroutineDispatcher = Dispatchers.IO) {
         withContext(dispatcher) {

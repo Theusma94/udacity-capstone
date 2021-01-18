@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.theusmadev.coronareminder.data.local.model.ReminderDataItem
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface RemindersDao {
@@ -13,5 +14,5 @@ interface RemindersDao {
     fun saveReminder(reminder: ReminderDataItem)
 
     @Query("SELECT * FROM reminders")
-    fun getReminders(): List<ReminderDataItem>
+    fun getReminders(): Flow<List<ReminderDataItem>>
 }

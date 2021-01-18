@@ -8,6 +8,7 @@ import com.theusmadev.coronareminder.data.network.CoronaApiService
 import com.theusmadev.coronareminder.data.repository.CoronaRepository
 import com.theusmadev.coronareminder.data.repository.ReminderRepository
 import com.theusmadev.coronareminder.ui.coronareminders.createreminder.CreateReminderViewModel
+import com.theusmadev.coronareminder.ui.coronareminders.createreminder.favorites.FavoritesViewModel
 import com.theusmadev.coronareminder.ui.dashboard.DashboardViewModel
 import com.theusmadev.coronareminder.ui.signin.SignInViewModel
 import com.theusmadev.coronareminder.ui.signup.SignUpViewModel
@@ -81,6 +82,9 @@ class CoronaReminderApp: Application() {
             }
             single {
                 CreateReminderViewModel(get())
+            }
+            viewModel {
+                FavoritesViewModel(get())
             }
         }
 
