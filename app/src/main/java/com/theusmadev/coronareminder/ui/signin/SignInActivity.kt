@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -41,6 +42,17 @@ class SignInActivity : AppCompatActivity() {
             val signInIntent = googleSignInClient.signInIntent
             startActivityForResult(signInIntent, RC_SIGN_IN)
         }
+        setupObservers()
+    }
+
+    private fun setupObservers() {
+        viewModel.userLogged.observe(this, Observer { isLogged ->
+            isLogged?.let { isLoggedNotNull ->
+                if(isLoggedNotNull) {
+                    startActivity(Intent(this, CoronaRemindersActivity::class.java))
+                }
+            }
+        })
     }
 
     private fun setupGoogleSignIn() {

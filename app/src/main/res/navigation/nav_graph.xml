@@ -9,16 +9,24 @@
         android:label="DashboardFragment" />
     <fragment
         android:id="@+id/favorites_fragment"
-        android:name="com.theusmadev.coronareminder.ui.coronareminders.reminderlist.favorites.FavoritesFragment"
+        android:name="com.theusmadev.coronareminder.ui.coronareminders.createreminder.favorites.FavoritesFragment"
         android:label="FavoritesFragment" />
     <fragment
         android:id="@+id/settings_fragment"
         android:name="com.theusmadev.coronareminder.ui.settings.SettingsFragment"
         android:label="SettingsFragment" />
     <fragment
-        android:id="@+id/reminders_fragment"
-        android:name="com.theusmadev.coronareminder.ui.coronareminders.reminderlist.RemindersFragment"
-        android:label="RemindersFragment" />
+        android:id="@+id/create_reminder_fragment"
+        android:name="com.theusmadev.coronareminder.ui.coronareminders.createreminder.CreateReminderFragment"
+        android:label="RemindersFragment" >
+        <action
+            android:id="@+id/action_create_reminder_fragment_to_select_location_fragment"
+            app:destination="@id/select_location_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/select_location_fragment"
+        android:name="com.theusmadev.coronareminder.ui.coronareminders.selectlocation.SelectLocationFragment"/>
 
 
 </navigation>

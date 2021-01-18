@@ -17,6 +17,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         android.defaultConfig.vectorDrawables.useSupportLibrary true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -78,4 +79,9 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion"
 
     implementation "androidx.preference:preference-ktx:$preferenceVersion"
+
+    //Maps & Geofencing
+    implementation "com.google.android.gms:play-services-location:$playServicesVersion"
+    implementation "com.google.android.gms:play-services-maps:$playServicesVersion"
+    implementation 'androidx.multidex:multidex:2.0.1'
 }

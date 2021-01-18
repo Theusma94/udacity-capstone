@@ -6,6 +6,8 @@ import com.theusmadev.coronareminder.data.local.CoronaDatabase
 import com.theusmadev.coronareminder.data.local.prefs.PreferencesHelper
 import com.theusmadev.coronareminder.data.network.CoronaApiService
 import com.theusmadev.coronareminder.data.repository.CoronaRepository
+import com.theusmadev.coronareminder.data.repository.ReminderRepository
+import com.theusmadev.coronareminder.ui.coronareminders.createreminder.CreateReminderViewModel
 import com.theusmadev.coronareminder.ui.dashboard.DashboardViewModel
 import com.theusmadev.coronareminder.ui.signin.SignInViewModel
 import com.theusmadev.coronareminder.ui.signup.SignUpViewModel
@@ -64,6 +66,10 @@ class CoronaReminderApp: Application() {
                 CoronaRepository(get(),get())
             }
 
+            single {
+                ReminderRepository(get())
+            }
+
             viewModel {
                 SignInViewModel()
             }
@@ -72,6 +78,9 @@ class CoronaReminderApp: Application() {
             }
             viewModel {
                 DashboardViewModel(get(),get())
+            }
+            single {
+                CreateReminderViewModel(get())
             }
         }
 
