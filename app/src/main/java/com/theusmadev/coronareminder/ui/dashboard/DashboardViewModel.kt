@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.theusmadev.coronareminder.data.local.model.CoronaData
+import com.theusmadev.coronareminder.data.local.model.CoronaCountryData
 import com.theusmadev.coronareminder.data.local.prefs.PreferencesHelper
 import com.theusmadev.coronareminder.data.repository.CoronaRepository
 import com.theusmadev.coronareminder.utils.ResponseState
@@ -18,8 +18,8 @@ class DashboardViewModel (
     val preferencesHelper: PreferencesHelper,
     val coronaRepository: CoronaRepository): ViewModel() {
 
-    val coronaGlobal = MutableLiveData<CoronaData>()
-    val coronaCountry = MutableLiveData<CoronaData>()
+    val coronaGlobal = MutableLiveData<CoronaCountryData>()
+    val coronaCountry = MutableLiveData<CoronaCountryData>()
 
     private val _showListCountries = MutableLiveData<List<String>>()
     val showListCountries: LiveData<List<String>> = _showListCountries

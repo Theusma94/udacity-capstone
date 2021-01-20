@@ -13,6 +13,10 @@ interface CoronaApiService {
     @Headers("Content-Type: application/json;charset=UTF-8")
     @GET
     fun getCountries(@Url url: String): Call<Map<String,CountryStats>>
+
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @GET
+    fun getStates(@Url url: String): Call<Map<String,CoronaStats>>
 }
 
 @Parcelize

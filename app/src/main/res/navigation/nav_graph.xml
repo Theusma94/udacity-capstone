@@ -28,5 +28,8 @@
         android:id="@+id/select_location_fragment"
         android:name="com.theusmadev.coronareminder.ui.coronareminders.selectlocation.SelectLocationFragment"/>
 
+    <fragment
+        android:id="@+id/country_detail_fragment"
+        android:name="com.theusmadev.coronareminder.ui.countrydetail.CountryDetailFragment"/>
 
 </navigation>
