@@ -8,11 +8,13 @@ import com.theusmadev.coronareminder.data.network.CoronaApiService
 import com.theusmadev.coronareminder.data.repository.CoronaRepository
 import com.theusmadev.coronareminder.data.repository.ReminderRepository
 import com.theusmadev.coronareminder.ui.coronareminders.createreminder.CreateReminderViewModel
-import com.theusmadev.coronareminder.ui.coronareminders.createreminder.favorites.FavoritesViewModel
+import com.theusmadev.coronareminder.ui.coronareminders.createreminder.favorites.RemindersViewModel
 import com.theusmadev.coronareminder.ui.countrydetail.CountryDetailViewModel
 import com.theusmadev.coronareminder.ui.dashboard.DashboardViewModel
 import com.theusmadev.coronareminder.ui.signin.SignInViewModel
 import com.theusmadev.coronareminder.ui.signup.SignUpViewModel
+import com.theusmadev.coronareminder.utils.GeofenceUtils
+import com.theusmadev.coronareminder.utils.PermissionsUtils
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -72,6 +74,14 @@ class CoronaReminderApp: Application() {
                 ReminderRepository(get())
             }
 
+            single {
+                PermissionsUtils(get())
+            }
+
+            single {
+                GeofenceUtils(get())
+            }
+
             viewModel {
                 SignInViewModel()
             }
@@ -85,7 +95,7 @@ class CoronaReminderApp: Application() {
                 CreateReminderViewModel(get())
             }
             viewModel {
-                FavoritesViewModel(get())
+                RemindersViewModel(get())
             }
             viewModel {
                 CountryDetailViewModel(get(),get())

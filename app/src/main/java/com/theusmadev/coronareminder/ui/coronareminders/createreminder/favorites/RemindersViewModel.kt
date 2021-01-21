@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class FavoritesViewModel(
+class RemindersViewModel(
     val reminderRepository: ReminderRepository,
     val dispatcher: CoroutineDispatcher = Dispatchers.IO): ViewModel() {
 

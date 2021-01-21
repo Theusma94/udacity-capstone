@@ -25,20 +25,22 @@ import com.theusmadev.coronareminder.R
 import com.theusmadev.coronareminder.data.local.model.ReminderDataItem
 import com.theusmadev.coronareminder.databinding.FragmentCreateReminderBinding
 import com.theusmadev.coronareminder.ui.coronareminders.geofence.GeofenceBroadcastReceiver
+import com.theusmadev.coronareminder.utils.GeofenceUtils
+import com.theusmadev.coronareminder.utils.GeofenceUtils.Companion.ACTION_GEOFENCE_EVENT
 import org.koin.android.ext.android.inject
 import java.util.concurrent.TimeUnit
 
 class CreateReminderFragment : Fragment() {
 
-    private lateinit var geofencingClient: GeofencingClient
-    private val runningQOrLater =
-        android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q
+    private val geofenceUtils: GeofenceUtils by inject()
 
-    private val geofencePendingIntent: PendingIntent by lazy {
-        val intent = Intent(requireContext(), GeofenceBroadcastReceiver::class.java)
-        intent.action = ACTION_GEOFENCE_EVENT
-        PendingIntent.getBroadcast(requireContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-    }
+//    private lateinit var geofencingClient: GeofencingClient
+//
+//    private val geofencePendingIntent: PendingIntent by lazy {
+//        val intent = Intent(requireContext(), GeofenceBroadcastReceiver::class.java)
+//        intent.action = ACTION_GEOFENCE_EVENT
+//        PendingIntent.getBroadcast(requireContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+//    }
 
     val viewModel: CreateReminderViewModel by inject()
 
@@ -54,86 +56,15 @@ class CreateReminderFragment : Fragment() {
             findNavController().navigate(
                 CreateReminderFragmentDirections.actionCreateReminderFragmentToSelectLocationFragment())
         }
-        geofencingClient = LocationServices.getGeofencingClient(requireContext())
+
+        geofenceUtils.setup(requireContext())
         setupObservers()
         return binding.root
     }
 
     private fun setupObservers() {
         viewModel.startSaveGeofence.observe(viewLifecycleOwner, Observer { reminderItem ->
-            addGeofence(reminderItem)
+            geofenceUtils.addGeofence(requireContext(), reminderItem)
         })
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        removeGeofences()
-    }
-
-    @SuppressLint("MissingPermission")
-    private fun addGeofence(reminderDataItem: ReminderDataItem) {
-        val geofence = Geofence.Builder()
-            .setRequestId(reminderDataItem.id)
-            .setCircularRegion(reminderDataItem.latitude!!,
-                reminderDataItem.longitude!!,
-                100f
-            )
-            .setExpirationDuration(TimeUnit.HOURS.toMillis(1))
-            .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER)
-            .build()
-
-        val geofencingRequest = GeofencingRequest.Builder()
-            .setInitialTrigger(GeofencingRequest.INITIAL_TRIGGER_ENTER)
-            .addGeofence(geofence)
-            .build()
-
-        geofencingClient.addGeofences(geofencingRequest, geofencePendingIntent)?.run {
-            addOnSuccessListener {
-                Log.e("Add Geofence", geofence.requestId)
-            }
-            addOnFailureListener {
-                Toast.makeText(requireContext(), "Error on create geofence",
-                    Toast.LENGTH_SHORT).show()
-                if ((it.message != null)) {
-                    Log.w("", it.message ?: "Error")
-                }
-            }
-        }
-    }
-
-    private fun removeGeofences() {
-        if (!foregroundAndBackgroundLocationPermissionApproved()) {
-            return
-        }
-        geofencingClient.removeGeofences(geofencePendingIntent)?.run {
-            addOnSuccessListener {
-                Log.d("", "Geofence removed")
-            }
-            addOnFailureListener {
-                Log.d("", "Failed on remove Geofence")
-            }
-        }
-    }
-
-    @TargetApi(29)
-    private fun foregroundAndBackgroundLocationPermissionApproved(): Boolean {
-        val foregroundLocationApproved = (
-                PackageManager.PERMISSION_GRANTED ==
-                        ActivityCompat.checkSelfPermission(requireContext(),
-                            Manifest.permission.ACCESS_FINE_LOCATION))
-        val backgroundPermissionApproved =
-            if (runningQOrLater) {
-                PackageManager.PERMISSION_GRANTED ==
-                        ActivityCompat.checkSelfPermission(
-                            requireContext(), Manifest.permission.ACCESS_BACKGROUND_LOCATION
-                        )
-            } else {
-                true
-            }
-        return foregroundLocationApproved && backgroundPermissionApproved
-    }
-
-    companion object {
-        const val ACTION_GEOFENCE_EVENT = "CreateReminderFragment.locationreminder.ACTION_GEOFENCE_EVENT"
     }
 }

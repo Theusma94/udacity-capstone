@@ -13,7 +13,7 @@ import org.koin.android.ext.android.inject
 
 class FavoritesFragment : Fragment() {
 
-    val viewModel: FavoritesViewModel by inject()
+    val viewModel: RemindersViewModel by inject()
 
     lateinit var binding: FragmentFavoritesBinding
     lateinit var adapter: RemindersAdapter

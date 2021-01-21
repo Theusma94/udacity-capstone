@@ -76,7 +76,8 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-scalars:$retrofitVersion"
-    implementation "com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
 
     implementation "androidx.preference:preference-ktx:$preferenceVersion"
 

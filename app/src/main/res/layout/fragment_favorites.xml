@@ -6,7 +6,7 @@
         <import type="android.view.View"/>
         <variable
             name="viewModel"
-            type="com.theusmadev.coronareminder.ui.coronareminders.createreminder.favorites.FavoritesViewModel" />
+            type="com.theusmadev.coronareminder.ui.coronareminders.createreminder.favorites.RemindersViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

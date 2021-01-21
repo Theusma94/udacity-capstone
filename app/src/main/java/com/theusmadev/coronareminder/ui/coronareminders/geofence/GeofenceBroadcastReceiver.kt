@@ -6,7 +6,7 @@ import android.content.Intent
 import android.util.Log
 import com.google.android.gms.location.Geofence
 import com.google.android.gms.location.GeofencingEvent
-import com.theusmadev.coronareminder.ui.coronareminders.createreminder.CreateReminderFragment.Companion.ACTION_GEOFENCE_EVENT
+import com.theusmadev.coronareminder.utils.GeofenceUtils.Companion.ACTION_GEOFENCE_EVENT
 
 /**
  * Triggered by the Geofence.  Since we can have many Geofences at once, we pull the request
