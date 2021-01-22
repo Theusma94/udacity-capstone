@@ -33,6 +33,7 @@ class SignInActivity : AppCompatActivity() {
 
         activitySignInBinding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
         activitySignInBinding.viewModel = viewModel
+        activitySignInBinding.loadingStatus = false
 
         activitySignInBinding.signUpText.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
@@ -46,6 +47,13 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
+        viewModel.showLoading.observe(this, Observer { isLoading ->
+            isLoading?.let { isLoadingNotNull ->
+                activitySignInBinding.loadingStatus = isLoadingNotNull
+                activitySignInBinding.invalidateAll()
+            }
+
+        })
         viewModel.userLogged.observe(this, Observer { isLogged ->
             isLogged?.let { isLoggedNotNull ->
                 if(isLoggedNotNull) {
@@ -72,25 +80,11 @@ class SignInActivity : AppCompatActivity() {
             try {
                 val account = task.getResult(ApiException::class.java)!!
                 Log.d("Teste", "firebaseAuthWithGoogle:" + account.id)
-                firebaseAuthWithGoogle(account.idToken!!)
+                viewModel.firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: ApiException) {
                 Log.w("Teste", "Google sign in failed", e)
             }
         }
-    }
-
-    private fun firebaseAuthWithGoogle(idToken: String) {
-        val credential = GoogleAuthProvider.getCredential(idToken, null)
-        viewModel.firebaseAuth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    Log.d("Teste", "signInWithCredential:success")
-                    val user = viewModel.firebaseAuth.currentUser
-                    startActivity(Intent(this, CoronaRemindersActivity::class.java))
-                } else {
-                    Log.w("Teste", "signInWithCredential:failure", task.exception)
-                }
-            }
     }
 
     override fun onStart() {
