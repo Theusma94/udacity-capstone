@@ -45,7 +45,8 @@ class DashboardFragment : Fragment() {
                     id: Long
             ) {
                 if(position > 0) {
-                    binding.countryGroup.visibility = View.VISIBLE
+                    binding.contentCountry.visibility = View.VISIBLE
+                    binding.spinnerContainer.visibility = View.GONE
                     binding.spinnerCountry.visibility = View.GONE
 
                     val selected = (selectedItemView as TextView).text
@@ -65,11 +66,12 @@ class DashboardFragment : Fragment() {
 
     private fun setupObservers() {
         viewModel.showListCountries.observe(viewLifecycleOwner, Observer {
-            binding.countryGroup.visibility = View.GONE
+            binding.contentCountry.visibility = View.GONE
+            binding.spinnerContainer.visibility = View.VISIBLE
             binding.spinnerCountry.visibility = View.VISIBLE
 
-            val adapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_item, it)
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            val adapter = ArrayAdapter<String>(requireContext(), R.layout.country_spinner_simple_item, it)
+            adapter.setDropDownViewResource(R.layout.country_spinner_dropdown_item)
             binding.spinnerCountry.adapter = adapter
         })
     }
