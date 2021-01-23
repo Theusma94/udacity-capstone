@@ -18,10 +18,10 @@ class CountryDetailViewModel(
     private val _statesList = MutableLiveData<List<CoronaStateData>>()
     val statesList: LiveData<List<CoronaStateData>> = coronaRepository.getStates().asLiveData()
 
-
+    var countryChoosed = ""
 
     fun getCountryCoronaInfo() {
-        val countryChoosed = preferencesHelper.getCountryChoosed()
+        countryChoosed = preferencesHelper.getCountryChoosed()
         if(countryChoosed.isNotEmpty()) {
             viewModelScope.launch {
                 coronaRepository.getStates().collect { states ->

@@ -63,7 +63,7 @@ class CoronaRepository(
         }
         return dataToSave
     }
-    
+
     fun refreshStates(countryName: String, dispatcher: CoroutineDispatcher = Dispatchers.IO): Flow<ResponseState<Any>> {
         return flow {
             emit(ResponseState.Loading)
@@ -88,14 +88,16 @@ class CoronaRepository(
         val dataToSave = mutableListOf<CoronaStateData>()
         if (body != null) {
             for((key,value) in body) {
-                dataToSave.add(
+                if(key != "All") {
+                    dataToSave.add(
                         CoronaStateData(
-                                region = key,
-                                confirmed = value.confirmed,
-                                recovered = value.recovered,
-                                deaths = value.deaths
+                            region = key,
+                            confirmed = value.confirmed,
+                            recovered = value.recovered,
+                            deaths = value.deaths
                         )
-                )
+                    )
+                }
             }
         }
         return dataToSave
