@@ -25,12 +25,17 @@ class DashboardFragment : Fragment() {
     val viewModel: DashboardViewModel by inject()
 
     lateinit var binding: FragmentDashboardBinding
+    lateinit var animator: ObjectAnimator
 
     @ExperimentalCoroutinesApi
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_dashboard, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+
+        animator = ObjectAnimator.ofFloat(binding.refreshCases, View.ROTATION, -360f, 0f)
+        animator.duration = 1000
+        animator.repeatCount = Animation.INFINITE
 
         viewModel.getCoronaInfo()
         setupObservers()
@@ -56,10 +61,8 @@ class DashboardFragment : Fragment() {
         }
 
         binding.refreshCases.setOnClickListener {
-            val animator = ObjectAnimator.ofFloat(binding.refreshCases, View.ROTATION, -360f, 0f)
-            animator.duration = 1500
-            animator.repeatCount = Animation.INFINITE
             animator.start()
+            viewModel.updateData()
         }
         return binding.root
     }
@@ -73,6 +76,12 @@ class DashboardFragment : Fragment() {
             val adapter = ArrayAdapter<String>(requireContext(), R.layout.country_spinner_simple_item, it)
             adapter.setDropDownViewResource(R.layout.country_spinner_dropdown_item)
             binding.spinnerCountry.adapter = adapter
+        })
+
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
+            if(!it) {
+                animator.cancel()
+            }
         })
     }
 }

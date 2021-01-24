@@ -1,10 +1,13 @@
 package com.theusmadev.coronareminder.utils
 
+import android.graphics.Color
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.squareup.picasso.Picasso
 import com.theusmadev.coronareminder.R
+import org.w3c.dom.Text
 import java.lang.StringBuilder
 
 object CustomViewBindings {
@@ -34,5 +37,15 @@ object CustomViewBindings {
     private fun processCountry(countryName: String): String {
         val countryTransformed = countryName.toLowerCase().replace(" ","-")
         return "https://www.countryflags.com/wp-content/uploads/$countryTransformed-flag-png-large.png"
+    }
+
+    @BindingAdapter(value = ["loading","bg_color_loading"])
+    @JvmStatic
+    fun TextView.applyLoading(loading: Boolean, color: String) {
+        if(loading) {
+            this.setBackgroundColor(Color.parseColor(color))
+        } else {
+            this.setBackgroundColor(ContextCompat.getColor(this.context, android.R.color.transparent))
+        }
     }
 }

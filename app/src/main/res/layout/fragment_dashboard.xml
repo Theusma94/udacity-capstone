@@ -59,6 +59,8 @@
                     android:layout_marginTop="4dp"
                     android:textSize="20sp"
                     android:textColor="#585858"
+                    app:loading="@{viewModel.isLoading}"
+                    app:bg_color_loading='@{"#585858"}'
                     app:appendText='@{"Confirmed cases"}'
                     app:maskValue="@{String.valueOf(viewModel.coronaGlobal.confirmed)}"
                     app:layout_constraintStart_toStartOf="@+id/world_stats_label"
@@ -80,6 +82,8 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:textColor="#949494"
+                    app:loading="@{viewModel.isLoading}"
+                    app:bg_color_loading='@{"#949494"}'
                     android:layout_marginStart="8dp"
                     app:layout_constraintBottom_toBottomOf="@+id/recovered_image"
                     app:layout_constraintStart_toEndOf="@+id/recovered_image"
@@ -105,6 +109,8 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:textColor="#949494"
+                    app:loading="@{viewModel.isLoading}"
+                    app:bg_color_loading='@{"#949494"}'
                     android:layout_marginStart="8dp"
                     app:layout_constraintBottom_toBottomOf="@+id/death_image"
                     app:layout_constraintStart_toEndOf="@+id/death_image"
@@ -151,6 +157,8 @@
                     android:layout_marginTop="4dp"
                     android:textSize="20sp"
                     android:textColor="#585858"
+                    app:loading="@{viewModel.isLoading}"
+                    app:bg_color_loading='@{"#585858"}'
                     app:appendText='@{"Confirmed cases"}'
                     app:maskValue="@{String.valueOf(viewModel.coronaCountry.confirmed)}"
                     app:layout_constraintStart_toStartOf="@+id/country_stats_label"
@@ -174,6 +182,8 @@
                     android:textSize="14sp"
                     android:layout_marginStart="8dp"
                     android:textColor="#949494"
+                    app:loading="@{viewModel.isLoading}"
+                    app:bg_color_loading='@{"#949494"}'
                     app:maskValue="@{String.valueOf(viewModel.coronaCountry.recovered)}"
                     app:layout_constraintBottom_toBottomOf="@+id/recovered_image_country"
                     app:layout_constraintStart_toEndOf="@+id/recovered_image_country"
@@ -198,6 +208,8 @@
                     android:textSize="14sp"
                     android:layout_marginStart="8dp"
                     android:textColor="#949494"
+                    app:loading="@{viewModel.isLoading}"
+                    app:bg_color_loading='@{"#949494"}'
                     app:maskValue="@{String.valueOf(viewModel.coronaCountry.deaths)}"
                     app:layout_constraintBottom_toBottomOf="@+id/death_image_country"
                     app:layout_constraintStart_toEndOf="@+id/death_image_country"
@@ -211,6 +223,7 @@
             android:id="@+id/spinner_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="invisible"
             style="@style/SpinnerBorder"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -222,7 +235,7 @@
                 android:layout_height="wrap_content"
                 android:visibility="invisible"
                 android:background="@null"
-                android:layout_margin="16dp" />
+                />
         </LinearLayout>
 
 

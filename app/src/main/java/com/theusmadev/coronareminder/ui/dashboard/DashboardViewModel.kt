@@ -24,9 +24,11 @@ class DashboardViewModel (
     private val _showListCountries = MutableLiveData<List<String>>()
     val showListCountries: LiveData<List<String>> = _showListCountries
 
+    val isLoading = MutableLiveData<Boolean>()
 
     @ExperimentalCoroutinesApi
     fun getCoronaInfo() {
+        isLoading.value = true
         viewModelScope.launch {
             coronaRepository.globalCorona.collect {
                 if(it == null) {
@@ -38,6 +40,7 @@ class DashboardViewModel (
                         }
                     }
                 } else {
+                    isLoading.value = false
                     coronaGlobal.postValue(it)
                 }
             }
@@ -62,6 +65,24 @@ class DashboardViewModel (
             coronaRepository.getSelectedCountry(countryChoosed).collect {
                 preferencesHelper.setCountryChoosed(countryChoosed)
                 coronaCountry.postValue(it)
+            }
+        }
+    }
+
+    @ExperimentalCoroutinesApi
+    fun updateData() {
+        isLoading.value = true
+        viewModelScope.launch {
+            coronaRepository.refreshCountries().collect {
+                when(it) {
+                    ResponseState.Loading -> { }
+                    is ResponseState.Error -> {
+                        isLoading.value = false
+                    }
+                    is ResponseState.Success -> {
+                        isLoading.value = false
+                    }
+                }
             }
         }
     }
