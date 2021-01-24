@@ -24,8 +24,8 @@ object CustomViewBindings {
         val url = processCountry(countryName)
         Picasso.get()
             .load(url)
-            .placeholder(R.drawable.ic_google)
-            .error(R.drawable.ic_death)
+            .placeholder(R.drawable.placeholder_loading)
+            .error(R.drawable.placeholder_error)
             .fit()
             .centerCrop()
             .into(imageView);

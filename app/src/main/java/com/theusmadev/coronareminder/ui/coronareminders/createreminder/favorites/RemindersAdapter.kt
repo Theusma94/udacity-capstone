@@ -16,7 +16,7 @@ class RemindersAdapter: DataBoundListAdapter<ReminderDataItem, ItemReminderBindi
             }
 
             override fun areContentsTheSame(oldItem: ReminderDataItem, newItem: ReminderDataItem): Boolean {
-                return oldItem.id == newItem.id
+                return oldItem.requestCode == newItem.requestCode
             }
 
         }) {

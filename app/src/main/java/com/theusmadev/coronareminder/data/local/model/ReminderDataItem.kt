@@ -1,16 +1,14 @@
 package com.theusmadev.coronareminder.data.local.model
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 @Entity(tableName = "reminders")
 data class ReminderDataItem(
+        @PrimaryKey(autoGenerate = false) var requestCode: Int,
         var title: String?,
-        var description: String?,
-        var location: String?,
-        var latitude: Double?,
-        var longitude: Double?,
-        var isFavorite: Boolean?,
-        @PrimaryKey(autoGenerate = false) val id: String = UUID.randomUUID().toString()
+        var date: String?
 )

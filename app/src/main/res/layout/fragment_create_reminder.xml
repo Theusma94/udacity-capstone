@@ -17,56 +17,53 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginTop="16dp"
-            android:hint="Title"
             android:gravity="center"
-            android:textSize="20sp"
-            android:textColor="#3A3A3A"
+            android:hint="Title"
             android:text="@={viewModel.titleReminder}"
+            android:textColor="#3A3A3A"
+            android:textSize="20sp"
+            app:layout_constraintVertical_bias=".2"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/input_description_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Description"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:textSize="16sp"
-            android:textColor="#545454"
-            android:text="@={viewModel.descriptionReminder}"
+        <ImageView
+            android:id="@+id/image_calendar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:translationZ="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/shape_calendar"
+            app:layout_constraintEnd_toEndOf="@+id/shape_calendar"
+            app:layout_constraintStart_toStartOf="@+id/shape_calendar"
+            app:layout_constraintTop_toTopOf="@+id/shape_calendar"
+            app:srcCompat="@drawable/ic_calendar"
+            app:tint="@color/teal_200" />
+
+        <ImageView
+            android:id="@+id/shape_calendar"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:background="@drawable/shape_calendar"
+            app:layout_constraintVertical_bias=".4"
+            app:layout_constraintBottom_toTopOf="@+id/button_create_reminder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/input_reminder_title" />
 
-        <Button
-            android:id="@+id/button_select_location"
-            android:text="Select location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/input_description_title" />
-
         <TextView
-            android:id="@+id/location_selected"
+            android:id="@+id/date_selected"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@={viewModel.selectedLocation}"
-            app:layout_constraintBottom_toBottomOf="@+id/button_select_location"
+            android:layout_marginTop="24dp"
+            android:fontFamily="sans-serif"
+            android:textColor="#3A3A3A"
+            android:textSize="20sp"
+            android:text="@={viewModel.dateAndHourReminder}"
+            tools:text="24/01/2021 18:00"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/button_select_location"
-            tools:text="beleza" />
-
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/switch_favorite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onCheckedChanged="@{(v,b) -> viewModel.checkFavoriteStatus(b)}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_select_location" />
+            app:layout_constraintTop_toBottomOf="@+id/shape_calendar" />
 
         <Button
             android:id="@+id/button_create_reminder"

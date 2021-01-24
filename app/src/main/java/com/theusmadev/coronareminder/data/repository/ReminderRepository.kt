@@ -10,7 +10,7 @@ class ReminderRepository(val coronaDatabase: CoronaDatabase) {
 
     val allReminders = coronaDatabase.remindersDao.getReminders()
 
-    suspend fun saveFavoriteReminder(item: ReminderDataItem, dispatcher: CoroutineDispatcher = Dispatchers.IO) {
+    suspend fun saveReminder(item: ReminderDataItem, dispatcher: CoroutineDispatcher = Dispatchers.IO) {
         withContext(dispatcher) {
             coronaDatabase.remindersDao.saveReminder(item)
         }

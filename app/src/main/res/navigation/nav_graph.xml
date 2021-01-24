@@ -18,15 +18,11 @@
     <fragment
         android:id="@+id/create_reminder_fragment"
         android:name="com.theusmadev.coronareminder.ui.coronareminders.createreminder.CreateReminderFragment"
-        android:label="RemindersFragment" >
+        android:label="RemindersFragment">
         <action
-            android:id="@+id/action_create_reminder_fragment_to_select_location_fragment"
-            app:destination="@id/select_location_fragment" />
+            android:id="@+id/action_create_reminder_fragment_to_dashboard_fragment"
+            app:destination="@id/dashboard_fragment" />
     </fragment>
-
-    <fragment
-        android:id="@+id/select_location_fragment"
-        android:name="com.theusmadev.coronareminder.ui.coronareminders.selectlocation.SelectLocationFragment"/>
 
     <fragment
         android:id="@+id/country_detail_fragment"
