@@ -86,7 +86,7 @@ class CoronaReminderApp: Application() {
             viewModel {
                 DashboardViewModel(get(),get())
             }
-            viewModel {
+            single {
                 CreateReminderViewModel(get(),get(),get())
             }
             viewModel {

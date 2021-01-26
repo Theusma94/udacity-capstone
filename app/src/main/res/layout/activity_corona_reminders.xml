@@ -8,6 +8,10 @@
         android:layout_height="match_parent"
         tools:context=".ui.coronareminders.CoronaRemindersActivity">
 
+        <include
+            android:id="@+id/appToolbar"
+            layout="@layout/toolbar"/>
+
         <fragment
             android:id="@+id/nav_host_fragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
@@ -17,7 +21,7 @@
             app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appToolbar"
             app:navGraph="@navigation/nav_graph" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
