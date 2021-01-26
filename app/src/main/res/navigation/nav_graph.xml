@@ -6,7 +6,11 @@
     <fragment
         android:id="@+id/dashboard_fragment"
         android:name="com.theusmadev.coronareminder.ui.dashboard.DashboardFragment"
-        android:label="DashboardFragment" />
+        android:label="DashboardFragment" >
+        <action
+            android:id="@+id/action_dashboard_fragment_to_country_detail_fragment"
+            app:destination="@id/country_detail_fragment" />
+    </fragment>
     <fragment
         android:id="@+id/favorites_fragment"
         android:name="com.theusmadev.coronareminder.ui.coronareminders.createreminder.favorites.FavoritesFragment"

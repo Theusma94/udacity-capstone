@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.theusmadev.coronareminder.R
 import com.theusmadev.coronareminder.databinding.FragmentDashboardBinding
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -64,6 +65,14 @@ class DashboardFragment : Fragment() {
             animator.start()
             viewModel.updateData()
         }
+
+        binding.changeCountry.setOnClickListener {
+            viewModel.clearSelectedCountry()
+        }
+
+        binding.moreAboutOption.setOnClickListener {
+            findNavController().navigate(DashboardFragmentDirections.actionDashboardFragmentToCountryDetailFragment())
+        }
         return binding.root
     }
 
@@ -73,8 +82,9 @@ class DashboardFragment : Fragment() {
             binding.spinnerContainer.visibility = View.VISIBLE
             binding.spinnerCountry.visibility = View.VISIBLE
 
-            val adapter = ArrayAdapter<String>(requireContext(), R.layout.country_spinner_simple_item, it)
-            adapter.setDropDownViewResource(R.layout.country_spinner_dropdown_item)
+            val adapter = ArrayAdapter<String>(requireContext(), R.layout.country_spinner_simple_item, it).apply {
+                setDropDownViewResource(R.layout.country_spinner_dropdown_item)
+            }
             binding.spinnerCountry.adapter = adapter
         })
 

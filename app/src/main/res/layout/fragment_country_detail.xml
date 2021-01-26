@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
+        <import type="android.view.View"/>
         <variable
             name="viewModel"
             type="com.theusmadev.coronareminder.ui.countrydetail.CountryDetailViewModel" />
@@ -21,15 +22,60 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ProgressBar
+            android:id="@+id/progress_loading"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:visibility="@{viewModel.statusLoading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/flag_country" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/states_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
+            android:visibility="@{viewModel.dataNotFound ? View.INVISIBLE : View.VISIBLE}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/flag_country"
-            tools:listitem="@layout/item_country_info"/>
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="0dp"
+            tools:listitem="@layout/item_country_info" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/data_not_found_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="data_not_found,try_again"/>
+        <ImageView
+            android:id="@+id/data_not_found"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:visibility="@{viewModel.dataNotFound ? View.VISIBLE : View.GONE}"
+            app:tint="@color/teal_700"
+            app:srcCompat="@drawable/ic_data_not_found"
+            app:layout_constraintBottom_toBottomOf="@+id/states_list"
+            app:layout_constraintEnd_toEndOf="@+id/states_list"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/states_list" />
+
+        <Button
+            android:id="@+id/try_again"
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:text="Try Again"
+            android:textColor="@color/teal_200"
+            android:visibility="@{viewModel.dataNotFound ? View.VISIBLE : View.GONE}"
+            android:onClick="@{() -> viewModel.retry()}"
+            android:backgroundTint="@color/opacity_white_color"
+            app:layout_constraintEnd_toEndOf="@+id/data_not_found"
+            app:layout_constraintStart_toStartOf="@+id/data_not_found"
+            app:layout_constraintTop_toBottomOf="@+id/data_not_found" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

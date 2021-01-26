@@ -16,14 +16,24 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 
 class CoronaRepository(
-    private val coronaApiService: CoronaApiService,
-    private val coronaDatabase: CoronaDatabase) {
+        private val coronaApiService: CoronaApiService,
+        private val coronaDatabase: CoronaDatabase) {
 
     val globalCorona = coronaDatabase.coronaDao.getGlobalStats()
-    val countries = coronaDatabase.coronaDao.getListOfCountries()
 
-    fun getSelectedCountry(selected: String): Flow<CoronaCountryData> = coronaDatabase.coronaDao.getSelectedCountry(selected)
     fun getStates(): Flow<List<CoronaStateData>> = coronaDatabase.coronaDao.getListOfStates()
+
+    suspend fun getSelectedCountry(selected: String, dispatcher: CoroutineDispatcher = Dispatchers.IO): CoronaCountryData {
+        return withContext(dispatcher) {
+            coronaDatabase.coronaDao.getSelectedCountry(selected)
+        }
+    }
+
+    suspend fun getListOfCountries(dispatcher: CoroutineDispatcher = Dispatchers.IO): List<String> {
+        return withContext(dispatcher) {
+            coronaDatabase.coronaDao.getListOfCountries()
+        }
+    }
 
     @ExperimentalCoroutinesApi
     fun refreshCountries(dispatcher: CoroutineDispatcher = Dispatchers.IO): Flow<ResponseState<List<String>>> {
@@ -52,19 +62,19 @@ class CoronaRepository(
         if (body != null) {
             for((key,value) in body) {
                 dataToSave.add(
-                    CoronaCountryData(
-                        region = key,
-                        confirmed = value.data.confirmed,
-                        recovered = value.data.recovered,
-                        deaths = value.data.deaths
-                    )
+                        CoronaCountryData(
+                                region = key,
+                                confirmed = value.data.confirmed,
+                                recovered = value.data.recovered,
+                                deaths = value.data.deaths
+                        )
                 )
             }
         }
         return dataToSave
     }
 
-    fun refreshStates(countryName: String, dispatcher: CoroutineDispatcher = Dispatchers.IO): Flow<ResponseState<Any>> {
+    fun refreshStates(countryName: String, dispatcher: CoroutineDispatcher = Dispatchers.IO): Flow<ResponseState<List<CoronaStateData>>> {
         return flow {
             emit(ResponseState.Loading)
             withContext(dispatcher) {
@@ -73,12 +83,12 @@ class CoronaRepository(
         }.flowOn(dispatcher)
     }
 
-    private fun fetchStates(countryName: String): ResponseState<Any> {
+    private fun fetchStates(countryName: String): ResponseState<List<CoronaStateData>> {
         return try {
             val response = coronaApiService.getStates("cases?country=$countryName").execute()
             val processed = processStatesResponse(response.body())
             coronaDatabase.coronaDao.insertStates(processed)
-            ResponseState.Success(Any())
+            ResponseState.Success(processed)
         } catch (throwable: Throwable) {
             ResponseState.Error(throwable)
         }
@@ -90,12 +100,12 @@ class CoronaRepository(
             for((key,value) in body) {
                 if(key != "All") {
                     dataToSave.add(
-                        CoronaStateData(
-                            region = key,
-                            confirmed = value.confirmed,
-                            recovered = value.recovered,
-                            deaths = value.deaths
-                        )
+                            CoronaStateData(
+                                    region = key,
+                                    confirmed = value.confirmed,
+                                    recovered = value.recovered,
+                                    deaths = value.deaths
+                            )
                     )
                 }
             }

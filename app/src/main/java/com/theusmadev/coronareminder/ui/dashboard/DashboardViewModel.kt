@@ -9,14 +9,16 @@ import com.theusmadev.coronareminder.data.local.model.CoronaCountryData
 import com.theusmadev.coronareminder.data.local.prefs.PreferencesHelper
 import com.theusmadev.coronareminder.data.repository.CoronaRepository
 import com.theusmadev.coronareminder.utils.ResponseState
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 class DashboardViewModel (
-    val preferencesHelper: PreferencesHelper,
-    val coronaRepository: CoronaRepository): ViewModel() {
+        val preferencesHelper: PreferencesHelper,
+        val coronaRepository: CoronaRepository): ViewModel() {
 
     val coronaGlobal = MutableLiveData<CoronaCountryData>()
     val coronaCountry = MutableLiveData<CoronaCountryData>()
@@ -45,27 +47,33 @@ class DashboardViewModel (
                 }
             }
         }
-        val countryChoosed = preferencesHelper.getCountryChoosed()
-        if(countryChoosed.isNullOrEmpty()) {
-            viewModelScope.launch {
-               coronaRepository.countries.map {
-                   it.dropLast(1).insertOnTop("Choose one country")
-               }.collect {
-                   _showListCountries.postValue(it)
-                   Log.d("Teste",it.toString())
-               }
+        checkCountrySelected()
+    }
+
+    fun clearSelectedCountry() {
+        preferencesHelper.setCountryChoosed("")
+        checkCountrySelected()
+    }
+
+    private fun checkCountrySelected() {
+        viewModelScope.launch {
+            val countryChoosed = preferencesHelper.getCountryChoosed()
+            if (countryChoosed.isEmpty()) {
+                val countries = coronaRepository.getListOfCountries().dropLast(1).insertOnTop("Choose one country")
+                _showListCountries.postValue(countries)
+                Log.d("Teste", countries.toString())
             }
-        } else {
-            getCountryCoronaInfo(countryChoosed)
+            else {
+                getCountryCoronaInfo(countryChoosed)
+            }
         }
     }
 
     fun getCountryCoronaInfo(countryChoosed: String) {
         viewModelScope.launch {
-            coronaRepository.getSelectedCountry(countryChoosed).collect {
-                preferencesHelper.setCountryChoosed(countryChoosed)
-                coronaCountry.postValue(it)
-            }
+            val countryData = coronaRepository.getSelectedCountry(countryChoosed)
+            preferencesHelper.setCountryChoosed(countryChoosed)
+            coronaCountry.postValue(countryData)
         }
     }
 
