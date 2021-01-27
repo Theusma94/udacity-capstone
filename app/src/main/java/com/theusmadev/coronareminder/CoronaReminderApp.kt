@@ -8,7 +8,7 @@ import com.theusmadev.coronareminder.data.network.CoronaApiService
 import com.theusmadev.coronareminder.data.repository.CoronaRepository
 import com.theusmadev.coronareminder.data.repository.ReminderRepository
 import com.theusmadev.coronareminder.ui.coronareminders.createreminder.CreateReminderViewModel
-import com.theusmadev.coronareminder.ui.coronareminders.createreminder.favorites.RemindersViewModel
+import com.theusmadev.coronareminder.ui.coronareminders.history.RemindersViewModel
 import com.theusmadev.coronareminder.ui.countrydetail.CountryDetailViewModel
 import com.theusmadev.coronareminder.ui.dashboard.DashboardViewModel
 import com.theusmadev.coronareminder.ui.signin.SignInViewModel

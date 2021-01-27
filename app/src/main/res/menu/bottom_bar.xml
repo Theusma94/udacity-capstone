@@ -7,7 +7,7 @@
         android:id="@+id/create_reminder_fragment"
         android:title="Create"/>
     <item
-        android:id="@+id/favorites_fragment"
-        android:title="Favorites"/>
+        android:id="@+id/history_fragment"
+        android:title="History"/>
 
 </menu>

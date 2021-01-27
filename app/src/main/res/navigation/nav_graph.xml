@@ -12,9 +12,9 @@
             app:destination="@id/country_detail_fragment" />
     </fragment>
     <fragment
-        android:id="@+id/favorites_fragment"
-        android:name="com.theusmadev.coronareminder.ui.coronareminders.createreminder.favorites.FavoritesFragment"
-        android:label="Favorites" />
+        android:id="@+id/history_fragment"
+        android:name="com.theusmadev.coronareminder.ui.coronareminders.history.HistoryFragment"
+        android:label="History" />
     <fragment
         android:id="@+id/settings_fragment"
         android:name="com.theusmadev.coronareminder.ui.settings.SettingsFragment"

@@ -1,4 +1,4 @@
-package com.theusmadev.coronareminder.ui.coronareminders.createreminder.favorites
+package com.theusmadev.coronareminder.ui.coronareminders.history
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.theusmadev.coronareminder.data.local.model.ReminderDataItem
 import com.theusmadev.coronareminder.data.repository.ReminderRepository
-import com.theusmadev.coronareminder.utils.ResponseState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
