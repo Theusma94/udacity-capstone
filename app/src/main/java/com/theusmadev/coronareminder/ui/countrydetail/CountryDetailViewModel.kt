@@ -2,7 +2,6 @@ package com.theusmadev.coronareminder.ui.countrydetail
 
 import android.util.Log
 import androidx.lifecycle.*
-import com.theusmadev.coronareminder.data.local.model.CoronaCountryData
 import com.theusmadev.coronareminder.data.local.model.CoronaStateData
 import com.theusmadev.coronareminder.data.local.prefs.PreferencesHelper
 import com.theusmadev.coronareminder.data.repository.CoronaRepository
@@ -18,13 +17,15 @@ class CountryDetailViewModel(
     val statesList: LiveData<List<CoronaStateData>> = coronaRepository.getStates().asLiveData()
 
     val statusLoading = MutableLiveData<Boolean>(false)
-    val dataNotFound = MutableLiveData<Boolean>(false)
+    private val _dataNotFound = MutableLiveData<Boolean>(false)
+    val dataNotFound: LiveData<Boolean> = _dataNotFound
+
     var countryChoosed = ""
 
     fun getCountryCoronaInfo() {
-        Log.d("Teste","getCountryCoronaInfo")
+        Log.d("Teste1","getCountryCoronaInfo")
         statusLoading.value = true
-        dataNotFound.value = false
+        _dataNotFound.value = false
         countryChoosed = preferencesHelper.getCountryChoosed()
         if(countryChoosed.isNotEmpty()) {
             viewModelScope.launch {
@@ -36,7 +37,7 @@ class CountryDetailViewModel(
                                 is ResponseState.Error -> statusLoading.postValue(false)
                                 is ResponseState.Success -> {
                                     if(response.item.isEmpty()) {
-                                        dataNotFound.value = true
+                                        _dataNotFound.value = true
                                     }
                                     statusLoading.postValue(false)
                                 }

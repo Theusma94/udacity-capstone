@@ -6,7 +6,7 @@
     <fragment
         android:id="@+id/dashboard_fragment"
         android:name="com.theusmadev.coronareminder.ui.dashboard.DashboardFragment"
-        android:label="DashboardFragment" >
+        android:label="Dashboard" >
         <action
             android:id="@+id/action_dashboard_fragment_to_country_detail_fragment"
             app:destination="@id/country_detail_fragment" />
@@ -14,7 +14,7 @@
     <fragment
         android:id="@+id/favorites_fragment"
         android:name="com.theusmadev.coronareminder.ui.coronareminders.createreminder.favorites.FavoritesFragment"
-        android:label="FavoritesFragment" />
+        android:label="Favorites" />
     <fragment
         android:id="@+id/settings_fragment"
         android:name="com.theusmadev.coronareminder.ui.settings.SettingsFragment"
@@ -22,7 +22,7 @@
     <fragment
         android:id="@+id/create_reminder_fragment"
         android:name="com.theusmadev.coronareminder.ui.coronareminders.createreminder.CreateReminderFragment"
-        android:label="RemindersFragment">
+        android:label="Create Reminder">
         <action
             android:id="@+id/action_create_reminder_fragment_to_dashboard_fragment"
             app:destination="@id/dashboard_fragment" />
@@ -30,6 +30,7 @@
 
     <fragment
         android:id="@+id/country_detail_fragment"
-        android:name="com.theusmadev.coronareminder.ui.countrydetail.CountryDetailFragment"/>
+        android:name="com.theusmadev.coronareminder.ui.countrydetail.CountryDetailFragment"
+        android:label="Details"/>
 
 </navigation>

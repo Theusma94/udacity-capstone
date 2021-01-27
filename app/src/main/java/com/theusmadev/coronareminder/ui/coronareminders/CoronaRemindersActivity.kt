@@ -33,6 +33,7 @@ class CoronaRemindersActivity: AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_corona_reminders)
         navController = findNavController(R.id.nav_host_fragment)
         toolbar = findViewById(R.id.toolbar)
+        toolbar.title = ""
         setSupportActionBar(toolbar)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         toolbar.setupWithNavController(navController, appBarConfiguration)
@@ -41,7 +42,7 @@ class CoronaRemindersActivity: AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
-        inflater.inflate(R.menu.toolbar, menu)
+        inflater.inflate(R.menu.main_menu, menu)
         return true
     }
 

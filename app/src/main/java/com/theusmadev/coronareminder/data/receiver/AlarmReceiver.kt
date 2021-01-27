@@ -16,24 +16,16 @@
 
 package com.theusmadev.coronareminder.data.receiver
 
-import android.app.AlarmManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.theusmadev.coronareminder.data.local.model.ReminderDataItem
 import com.theusmadev.coronareminder.utils.sendNotification
 
 class AlarmReceiver: BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
-
-        // TODO: Step 1.9 add call to sendNotification
-//        val notificationManager = ContextCompat.getSystemService(
-//            context,
-//            NotificationManager::class.java
-//        ) as NotificationManager
-        val reminder: String = intent.getStringExtra("data") ?: "You will a some place"
-        val title = "Will $reminder?"
+        val reminder: String = intent.getStringExtra("data") ?: "Going somewhere?"
+        val title = "Going to $reminder?"
             sendNotification(context,title)
     }
 

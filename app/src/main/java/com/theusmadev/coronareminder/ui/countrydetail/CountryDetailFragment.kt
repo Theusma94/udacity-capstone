@@ -20,7 +20,7 @@ class CountryDetailFragment: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_country_detail, container, false)
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
 
         adapter = CoronaAdapter()
@@ -35,6 +35,15 @@ class CountryDetailFragment: Fragment() {
     private fun setupObservers() {
         viewModel.statesList.observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
+        })
+        viewModel.dataNotFound.observe(viewLifecycleOwner, Observer {
+            if(it) {
+                binding.statesList.visibility = View.GONE
+                binding.dataNotFoundGroup.visibility = View.VISIBLE
+            } else {
+                binding.statesList.visibility = View.VISIBLE
+                binding.dataNotFoundGroup.visibility = View.GONE
+            }
         })
     }
 }
