@@ -36,10 +36,11 @@ class CreateReminderViewModel (
 
     fun checkFields() {
         if(!titleReminder.value.isNullOrEmpty() && !dateAndHourReminder.value.isNullOrEmpty()) {
+            val timestamp = calendarUtils.getTimestamp(dateAndHourReminder.value!!)
             val reminderDataItem = ReminderDataItem(
                     requestCode = getUniqueId(),
                     title = titleReminder.value,
-                    date = dateAndHourReminder.value
+                    dateTimestamp = timestamp
             )
             startAlarm(reminderDataItem)
         }

@@ -1,6 +1,7 @@
 package com.theusmadev.coronareminder.utils
 
 import android.graphics.Color
+import android.text.format.DateFormat.format
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -9,6 +10,9 @@ import com.squareup.picasso.Picasso
 import com.theusmadev.coronareminder.R
 import org.w3c.dom.Text
 import java.lang.StringBuilder
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 object CustomViewBindings {
 
@@ -26,12 +30,12 @@ object CustomViewBindings {
     fun applyFlagImage(imageView: ImageView, countryName: String) {
         val url = processCountry(countryName)
         Picasso.get()
-            .load(url)
-            .placeholder(R.drawable.placeholder_loading)
-            .error(R.drawable.placeholder_error)
-            .fit()
-            .centerCrop()
-            .into(imageView);
+                .load(url)
+                .placeholder(R.drawable.placeholder_loading)
+                .error(R.drawable.placeholder_error)
+                .fit()
+                .centerCrop()
+                .into(imageView);
     }
 
     private fun processCountry(countryName: String): String {
@@ -47,5 +51,30 @@ object CustomViewBindings {
         } else {
             this.setBackgroundColor(ContextCompat.getColor(this.context, android.R.color.transparent))
         }
+    }
+
+    @BindingAdapter("date_alarm")
+    @JvmStatic
+    fun ImageView.chooseAlarmIcon(dateTimestamp: Long?) {
+        val today = Date()
+        if(today.time > dateTimestamp ?: 0L) {
+            this.setImageResource(R.drawable.ic_alarm_off)
+        } else {
+            this.setImageResource(R.drawable.ic_alarm)
+        }
+    }
+
+    @BindingAdapter("timestamp_to_date")
+    @JvmStatic
+    fun TextView.convertTimestamp(dateTimestamp: Long?) {
+        val patternDefault = "dd/MM/yyyy HH:mm"
+        val formatter = SimpleDateFormat(patternDefault, Locale.getDefault())
+        dateTimestamp?.let {
+            val date = Date(it)
+            this.text = formatter.format(date)
+        } ?: run {
+            this.text = "ERROR ON PARSE DATA"
+        }
+
     }
 }

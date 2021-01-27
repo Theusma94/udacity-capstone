@@ -10,5 +10,5 @@ import java.util.*
 data class ReminderDataItem(
         @PrimaryKey(autoGenerate = false) var requestCode: Int,
         var title: String?,
-        var date: String?
+        var dateTimestamp: Long?
 )

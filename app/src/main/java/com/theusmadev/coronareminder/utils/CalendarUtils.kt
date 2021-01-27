@@ -76,6 +76,10 @@ class CalendarUtils: LifecycleObserver {
     fun getCalendar(): Calendar {
         return calendar
     }
+
+    fun getTimestamp(date: String): Long {
+        return (sdf.parse(date) as Date).time
+    }
 }
 
 interface CalendarListener {

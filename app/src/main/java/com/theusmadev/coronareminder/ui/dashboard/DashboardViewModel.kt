@@ -44,10 +44,10 @@ class DashboardViewModel (
                 } else {
                     isLoading.value = false
                     coronaGlobal.postValue(it)
+                    checkCountrySelected()
                 }
             }
         }
-        checkCountrySelected()
     }
 
     fun clearSelectedCountry() {

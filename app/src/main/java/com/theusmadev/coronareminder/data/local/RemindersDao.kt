@@ -13,6 +13,6 @@ interface RemindersDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveReminder(reminder: ReminderDataItem)
 
-    @Query("SELECT * FROM reminders")
+    @Query("SELECT * FROM reminders ORDER BY dateTimestamp ASC")
     fun getReminders(): Flow<List<ReminderDataItem>>
 }

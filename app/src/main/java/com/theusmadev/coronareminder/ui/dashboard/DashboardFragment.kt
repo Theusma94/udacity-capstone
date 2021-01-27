@@ -51,7 +51,7 @@ class DashboardFragment : Fragment() {
                     id: Long
             ) {
                 if(position > 0) {
-                    binding.contentCountry.visibility = View.VISIBLE
+                    binding.cardCountry.visibility = View.VISIBLE
                     binding.spinnerContainer.visibility = View.GONE
                     binding.spinnerCountry.visibility = View.GONE
 
@@ -78,7 +78,7 @@ class DashboardFragment : Fragment() {
 
     private fun setupObservers() {
         viewModel.showListCountries.observe(viewLifecycleOwner, Observer {
-            binding.contentCountry.visibility = View.GONE
+            binding.cardCountry.visibility = View.GONE
             binding.spinnerContainer.visibility = View.VISIBLE
             binding.spinnerCountry.visibility = View.VISIBLE
 
