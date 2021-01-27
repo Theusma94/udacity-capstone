@@ -2,26 +2,24 @@ package com.theusmadev.coronareminder.ui.coronareminders
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.theusmadev.coronareminder.R
 import com.theusmadev.coronareminder.databinding.ActivityCoronaRemindersBinding
-import com.theusmadev.coronareminder.ui.coronareminders.createreminder.favorites.RemindersViewModel
 import com.theusmadev.coronareminder.ui.signin.SignInActivity
-import org.koin.android.ext.android.inject
+
 
 class CoronaRemindersActivity: AppCompatActivity() {
 
@@ -42,7 +40,7 @@ class CoronaRemindersActivity: AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-       val inflater: MenuInflater = menuInflater
+        val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.toolbar, menu)
         return true
     }
@@ -58,8 +56,13 @@ class CoronaRemindersActivity: AppCompatActivity() {
 
     private fun makeLogout() {
         FirebaseAuth.getInstance().signOut()
-        startActivity(Intent(this, SignInActivity::class.java))
-        finish()
+        GoogleSignIn.getClient(
+                this,
+                GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
+        ).signOut().addOnCompleteListener {
+            startActivity(Intent(this, SignInActivity::class.java))
+            finish()
+        }
     }
 
 }
