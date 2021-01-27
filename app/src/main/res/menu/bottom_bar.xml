@@ -2,12 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/dashboard_fragment"
+        android:icon="@drawable/ic_dashboard"
         android:title="Dashboard"/>
     <item
         android:id="@+id/create_reminder_fragment"
+        android:icon="@drawable/ic_create_alarm"
         android:title="Create"/>
     <item
         android:id="@+id/history_fragment"
+        android:icon="@drawable/ic_history"
         android:title="History"/>
 
 </menu>

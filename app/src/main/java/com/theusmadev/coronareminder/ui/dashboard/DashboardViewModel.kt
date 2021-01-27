@@ -59,7 +59,7 @@ class DashboardViewModel (
         viewModelScope.launch {
             val countryChoosed = preferencesHelper.getCountryChoosed()
             if (countryChoosed.isEmpty()) {
-                val countries = coronaRepository.getListOfCountries().dropLast(1).insertOnTop("Choose one country")
+                val countries = coronaRepository.getListOfCountries().insertOnTop("Choose one country")
                 _showListCountries.postValue(countries)
                 Log.d("Teste", countries.toString())
             }

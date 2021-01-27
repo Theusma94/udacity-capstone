@@ -29,4 +29,11 @@
         <item name="android:textColor">@color/teal_200</item>
         <item name="android:textColorHint">@color/teal_200</item>
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:background">@color/teal_200</item>
+        <item name="colorControlNormal">@color/opacity_white_color</item>
+        <item name="android:textColorPrimary">@color/opacity_white_color</item>
+        <item name="android:textColorSecondary">@color/opacity_white_color</item>
+    </style>
 </resources>
