@@ -70,6 +70,7 @@ class CreateReminderViewModel (
     private fun setupIntents(reminderDataItem: ReminderDataItem) {
         notifyIntent = Intent(app, AlarmReceiver::class.java).apply {
             putExtra("data", reminderDataItem.title)
+            putExtra("timestamp",reminderDataItem.dateTimestamp)
         }
         notifyPendingIntent = PendingIntent.getBroadcast(
                 getApplication(),

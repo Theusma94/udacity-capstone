@@ -23,6 +23,7 @@
         </activity>
         <activity android:name=".ui.signup.SignUpActivity"/>
         <activity android:name=".ui.coronareminders.CoronaRemindersActivity"/>
+        <activity android:name=".ui.coronareminders.ReminderDetailActivity"/>
 
         <receiver
             android:name=".data.receiver.AlarmReceiver"

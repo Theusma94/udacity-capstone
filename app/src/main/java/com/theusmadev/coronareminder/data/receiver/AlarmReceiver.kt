@@ -25,8 +25,9 @@ class AlarmReceiver: BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         val reminder: String = intent.getStringExtra("data") ?: "Going somewhere?"
+        val timestamp: Long = intent.getLongExtra("timestamp", 0L)
         val title = "Going to $reminder?"
-            sendNotification(context,title)
+            sendNotification(context,title,timestamp)
     }
 
 }

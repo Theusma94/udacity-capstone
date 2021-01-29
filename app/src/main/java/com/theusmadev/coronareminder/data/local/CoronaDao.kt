@@ -1,9 +1,6 @@
 package com.theusmadev.coronareminder.data.local
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.theusmadev.coronareminder.data.local.model.CoronaCountryData
 import com.theusmadev.coronareminder.data.local.model.CoronaStateData
 import kotlinx.coroutines.flow.Flow
@@ -23,10 +20,15 @@ interface CoronaDao {
     @Query("SELECT region FROM corona_country WHERE region != 'Global'")
     fun getListOfCountries(): List<String>
 
+    @Query("DELETE FROM corona_country")
+    fun deleteCountries()
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertStates(items: List<CoronaStateData>)
 
     @Query("SELECT * FROM corona_states")
     fun getListOfStates(): Flow<List<CoronaStateData>>
 
+    @Query("DELETE FROM corona_states")
+    fun deleteStates()
 }
