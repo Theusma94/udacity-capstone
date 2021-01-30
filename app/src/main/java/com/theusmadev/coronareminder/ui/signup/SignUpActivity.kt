@@ -50,7 +50,7 @@ class SignUpActivity: AppCompatActivity() {
                 if(responseNotNull) {
                     onBackPressed()
                 } else {
-                    Toast.makeText(this, "Error on register!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, getString(R.string.register_user_error), Toast.LENGTH_LONG).show()
                 }
             }
         })

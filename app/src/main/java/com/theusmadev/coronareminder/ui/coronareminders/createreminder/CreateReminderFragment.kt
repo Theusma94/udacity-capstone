@@ -45,9 +45,9 @@ class CreateReminderFragment : Fragment(), CalendarListener {
                 if(it) {
                     findNavController().navigate(CreateReminderFragmentDirections.actionCreateReminderFragmentToDashboardFragment())
                     viewModel.onReminderCreated()
-                    Toast.makeText(requireContext(), "Reminder created!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), getString(R.string.reminder_created), Toast.LENGTH_LONG).show()
                 } else {
-                    Toast.makeText(requireContext(), "Error on create reminder", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), getString(R.string.error_on_create_reminder), Toast.LENGTH_LONG).show()
                 }
             }
         })

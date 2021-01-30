@@ -64,7 +64,7 @@ class SignInActivity : AppCompatActivity() {
                     startActivity(Intent(this, CoronaRemindersActivity::class.java))
                     finish()
                 } else {
-                    Toast.makeText(this, "Error on Sign in", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, getString(R.string.sign_in_error), Toast.LENGTH_LONG).show()
                 }
             }
         })
@@ -86,10 +86,9 @@ class SignInActivity : AppCompatActivity() {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)!!
-                Log.d("Teste", "firebaseAuthWithGoogle:" + account.id)
                 viewModel.firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: ApiException) {
-                Log.w("Teste", "Google sign in failed", e)
+                Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -98,11 +97,8 @@ class SignInActivity : AppCompatActivity() {
         super.onStart()
         val user = viewModel.firebaseAuth.currentUser
         if(user != null) {
-            Log.d("Teste","user ${user.email} logged")
             startActivity(Intent(this, CoronaRemindersActivity::class.java))
             finish()
-        } else {
-            Log.d("Teste", "user not logged")
         }
     }
 

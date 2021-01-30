@@ -33,7 +33,7 @@ class ReminderDetailActivity: AppCompatActivity() {
         val titleReminder = intent.getStringExtra(EXTRA_Title)
         val timestamp = intent.getLongExtra(EXTRA_Date, 0L)
 
-        binding.title = "You going to $titleReminder?"
+        binding.title = getString(R.string.title_detail,titleReminder)
         binding.timestamp = timestamp
 
         binding.buttonFinalize.setOnClickListener {

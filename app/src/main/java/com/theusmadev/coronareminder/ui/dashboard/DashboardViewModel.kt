@@ -64,9 +64,6 @@ class DashboardViewModel (
 
     fun clearSelectedCountry() {
         preferencesHelper.setCountryChoosed("")
-//        viewModelScope.launch {
-//            coronaRepository.deleteStates()
-//        }
         checkCountrySelected()
     }
 
@@ -76,7 +73,6 @@ class DashboardViewModel (
             if (countryChoosed.isEmpty()) {
                 val countries = coronaRepository.getListOfCountries().insertOnTop("Choose one country")
                 _showListCountries.postValue(countries)
-                Log.d("Teste", countries.toString())
             }
             else {
                 getCountryCoronaInfo(countryChoosed)

@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Corona Reminder</string>
+    <string name="corona_logo">CORONA</string>
+    <string name="reminder_logo">Reminder</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="sign_in">signin</string>
+    <string name="create_acc_text">Dont have an account?</string>
+    <string name="sign_in_error">Error on Sign in</string>
+    <string name="create_an_account">Create an Account</string>
+    <string name="full_name_hint">Full Name</string>
+    <string name="register_user_error">Error on register!</string>
+    <string name="all_the_world">All the world</string>
+    <string name="change_country">Change</string>
+    <string name="see_more_about_country">See more</string>
+    <string name="try_again">Try Again</string>
+    <string name="going_somewhere_hint">Going somewhere?</string>
+    <string name="create_reminder">Create</string>
+    <string name="reminder_created">Reminder created!</string>
+    <string name="error_on_create_reminder">Error on create reminder</string>
+    <string name="title_detail">You going to %1$s?</string>
 </resources>

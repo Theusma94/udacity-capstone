@@ -47,12 +47,8 @@ class CreateReminderViewModel (
     }
 
     private fun startAlarm(reminderDataItem: ReminderDataItem) {
-        Log.d("Teste","startAlarm()")
         setupIntents(reminderDataItem)
         val calendar: Calendar = calendarUtils.getCalendar()
-        Log.d("Teste","day ${calendar.get(Calendar.DAY_OF_MONTH)}")
-        Log.d("Teste","hour ${calendar.get(Calendar.HOUR_OF_DAY)}")
-        Log.d("Teste","minute ${calendar.get(Calendar.MINUTE)}")
         val trigger = calendar.timeInMillis
         notifyPendingIntent?.let {
             AlarmManagerCompat.setExactAndAllowWhileIdle(

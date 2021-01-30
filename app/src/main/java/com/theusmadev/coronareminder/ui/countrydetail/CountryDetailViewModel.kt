@@ -30,7 +30,6 @@ class CountryDetailViewModel(
     }
 
     fun getCountryCoronaInfo() {
-        Log.d("Teste1","getCountryCoronaInfo")
         statusLoading.value = true
         _dataNotFound.value = false
         countryChoosed = preferencesHelper.getCountryChoosed()
