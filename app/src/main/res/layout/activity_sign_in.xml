@@ -18,6 +18,31 @@
     android:layout_height="match_parent"
     tools:context=".ui.signin.SignInActivity">
 
+    <TextView
+        android:id="@+id/logo_first"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif-monospace"
+        android:text="CORONA"
+        android:textColor="@color/opacity_white_color"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/input_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/logo_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reminder"
+        android:textSize="18sp"
+        android:textColor="@color/teal_200"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@+id/logo_first"
+        app:layout_constraintTop_toBottomOf="@+id/logo_first" />
+
     <EditText
         android:id="@+id/input_email"
         android:layout_width="match_parent"
@@ -29,7 +54,7 @@
         android:paddingStart="8dp"
         android:text="@={viewModel.emailContent}"
         android:inputType="textEmailAddress"
-        app:layout_constraintVertical_bias=".3"
+        app:layout_constraintVertical_bias=".4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -92,6 +117,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="@{loadingStatus ? View.VISIBLE : View.GONE}"
+        tools:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
