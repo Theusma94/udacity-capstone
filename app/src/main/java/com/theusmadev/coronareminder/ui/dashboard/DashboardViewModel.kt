@@ -15,6 +15,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import retrofit2.Response
 
 class DashboardViewModel (
         val preferencesHelper: PreferencesHelper,
