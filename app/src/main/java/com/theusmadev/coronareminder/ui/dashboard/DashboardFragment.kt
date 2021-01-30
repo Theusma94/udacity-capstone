@@ -3,6 +3,7 @@ package com.theusmadev.coronareminder.ui.dashboard
 import android.animation.Animator
 import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,6 +39,7 @@ class DashboardFragment : Fragment() {
         animator.duration = 1000
         animator.repeatCount = Animation.INFINITE
 
+        viewModel.startJob()
         viewModel.getCoronaInfo()
         setupObservers()
 
@@ -46,15 +48,11 @@ class DashboardFragment : Fragment() {
 
             override fun onItemSelected(
                     parentView: AdapterView<*>?,
-                    selectedItemView: View,
+                    selectedItemView: View?,
                     position: Int,
                     id: Long
             ) {
                 if(position > 0) {
-                    binding.cardCountry.visibility = View.VISIBLE
-                    binding.spinnerContainer.visibility = View.GONE
-                    binding.spinnerCountry.visibility = View.GONE
-
                     val selected = (selectedItemView as TextView).text
                     viewModel.getCountryCoronaInfo(selected.toString())
                 }
@@ -93,5 +91,18 @@ class DashboardFragment : Fragment() {
                 animator.cancel()
             }
         })
+
+        viewModel.countrySelected.observe(viewLifecycleOwner, Observer { isSelected ->
+            isSelected?.let {
+                binding.cardCountry.visibility = View.VISIBLE
+                binding.spinnerContainer.visibility = View.GONE
+                binding.spinnerCountry.visibility = View.GONE
+            }
+        })
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewModel.cancelJob()
     }
 }

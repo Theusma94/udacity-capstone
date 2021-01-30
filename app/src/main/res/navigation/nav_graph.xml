@@ -25,6 +25,8 @@
         android:label="Create Reminder">
         <action
             android:id="@+id/action_create_reminder_fragment_to_dashboard_fragment"
+            app:popUpTo="@+id/dashboard_fragment"
+            app:popUpToInclusive="true"
             app:destination="@id/dashboard_fragment" />
     </fragment>
 

@@ -11,8 +11,7 @@ interface CoronaInfo {
 }
 @Entity(tableName = "corona_country")
 data class CoronaCountryData(
-    @PrimaryKey(autoGenerate = true) val id: Long = 0L,
-    override val region: String,
+    @PrimaryKey(autoGenerate = false) override val region: String,
     override val confirmed: Long,
     override val recovered: Long,
     override val deaths: Long
@@ -20,8 +19,7 @@ data class CoronaCountryData(
 
 @Entity(tableName = "corona_states")
 data class CoronaStateData(
-        @PrimaryKey(autoGenerate = true) val id: Long = 0L,
-        override val region: String,
+        @PrimaryKey(autoGenerate = false) override val region: String,
         override val confirmed: Long,
         override val recovered: Long,
         override val deaths: Long

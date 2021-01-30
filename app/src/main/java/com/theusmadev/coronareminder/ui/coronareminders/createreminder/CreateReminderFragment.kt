@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.theusmadev.coronareminder.R
 import com.theusmadev.coronareminder.databinding.FragmentCreateReminderBinding
 import com.theusmadev.coronareminder.utils.CalendarListener
@@ -32,7 +34,23 @@ class CreateReminderFragment : Fragment(), CalendarListener {
             calendarUtils.showPicker(requireContext())
         }
 
+        setupObservers()
+
         return binding.root
+    }
+
+    private fun setupObservers() {
+        viewModel.reminderCreated.observe(viewLifecycleOwner, Observer { isCreated ->
+            isCreated?.let {
+                if(it) {
+                    findNavController().navigate(CreateReminderFragmentDirections.actionCreateReminderFragmentToDashboardFragment())
+                    viewModel.onReminderCreated()
+                    Toast.makeText(requireContext(), "Reminder created!", Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(requireContext(), "Error on create reminder", Toast.LENGTH_LONG).show()
+                }
+            }
+        })
     }
 
     override fun onDateAndHourSeted(dateAndHour: String) {

@@ -28,8 +28,8 @@ class CreateReminderViewModel (
     private val alarmManager = app.getSystemService(Context.ALARM_SERVICE) as AlarmManager
     private var notifyIntent: Intent? = null
 
-    private val _startSaveGeofence = MutableLiveData<ReminderDataItem>()
-    val startSaveGeofence: LiveData<ReminderDataItem> = _startSaveGeofence
+    private val _reminderCreated = MutableLiveData<Boolean?>()
+    val reminderCreated: LiveData<Boolean?> = _reminderCreated
 
     private val _showDateSelected = MutableLiveData<Boolean?>()
     val showDateSelected: LiveData<Boolean?> = _showDateSelected
@@ -61,10 +61,14 @@ class CreateReminderViewModel (
                     trigger,
                     it
             )
+            viewModelScope.launch {
+                reminderRepository.saveReminder(reminderDataItem)
+            }
+            _reminderCreated.value = true
+        } ?: run {
+            _reminderCreated.value = false
         }
-        viewModelScope.launch {
-            reminderRepository.saveReminder(reminderDataItem)
-        }
+
     }
 
     private fun setupIntents(reminderDataItem: ReminderDataItem) {
@@ -79,5 +83,11 @@ class CreateReminderViewModel (
                 PendingIntent.FLAG_UPDATE_CURRENT
         )
 
+    }
+
+    fun onReminderCreated() {
+        titleReminder.value = ""
+        dateAndHourReminder.value = ""
+        _reminderCreated.value = null
     }
 }

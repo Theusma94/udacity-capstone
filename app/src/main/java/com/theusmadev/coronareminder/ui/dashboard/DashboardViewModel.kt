@@ -26,12 +26,23 @@ class DashboardViewModel (
     private val _showListCountries = MutableLiveData<List<String>>()
     val showListCountries: LiveData<List<String>> = _showListCountries
 
-    val isLoading = MutableLiveData<Boolean>()
+    private val _countrySelected = MutableLiveData<Boolean?>(null)
+    val countrySelected: LiveData<Boolean?> = _countrySelected
 
+    val isLoading = MutableLiveData<Boolean>()
+    var job: Job? = null
+
+    fun startJob() {
+        job?.start()
+    }
+
+    fun cancelJob() {
+        job?.cancel()
+    }
     @ExperimentalCoroutinesApi
     fun getCoronaInfo() {
         isLoading.value = true
-        viewModelScope.launch {
+        job = viewModelScope.launch {
             coronaRepository.globalCorona.collect {
                 if(it == null) {
                     coronaRepository.refreshCountries().collect {
@@ -52,6 +63,9 @@ class DashboardViewModel (
 
     fun clearSelectedCountry() {
         preferencesHelper.setCountryChoosed("")
+//        viewModelScope.launch {
+//            coronaRepository.deleteStates()
+//        }
         checkCountrySelected()
     }
 
@@ -74,6 +88,7 @@ class DashboardViewModel (
             val countryData = coronaRepository.getSelectedCountry(countryChoosed)
             preferencesHelper.setCountryChoosed(countryChoosed)
             coronaCountry.postValue(countryData)
+            _countrySelected.postValue(true)
         }
     }
 

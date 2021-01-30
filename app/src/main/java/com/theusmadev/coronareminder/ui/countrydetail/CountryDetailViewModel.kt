@@ -6,6 +6,7 @@ import com.theusmadev.coronareminder.data.local.model.CoronaStateData
 import com.theusmadev.coronareminder.data.local.prefs.PreferencesHelper
 import com.theusmadev.coronareminder.data.repository.CoronaRepository
 import com.theusmadev.coronareminder.utils.ResponseState
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -22,13 +23,19 @@ class CountryDetailViewModel(
 
     var countryChoosed = ""
 
+    var job: Job? = null
+
+    fun startJob() {
+        job?.start()
+    }
+
     fun getCountryCoronaInfo() {
         Log.d("Teste1","getCountryCoronaInfo")
         statusLoading.value = true
         _dataNotFound.value = false
         countryChoosed = preferencesHelper.getCountryChoosed()
         if(countryChoosed.isNotEmpty()) {
-            viewModelScope.launch {
+            job = viewModelScope.launch {
                 coronaRepository.getStates().collect { states ->
                     if(states.isEmpty()) {
                         coronaRepository.refreshStates(countryChoosed).collect { response ->
@@ -54,6 +61,10 @@ class CountryDetailViewModel(
 
     fun retry() {
         getCountryCoronaInfo()
+    }
+
+    fun onViewDestroyed() {
+        job?.cancel()
     }
 
 }

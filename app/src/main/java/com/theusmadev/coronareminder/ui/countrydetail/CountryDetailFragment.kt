@@ -25,6 +25,7 @@ class CountryDetailFragment: Fragment() {
 
         adapter = CoronaAdapter()
         binding.statesList.adapter = adapter
+        viewModel.startJob()
 
         setupObservers()
         viewModel.getCountryCoronaInfo()
@@ -45,5 +46,10 @@ class CountryDetailFragment: Fragment() {
                 binding.dataNotFoundGroup.visibility = View.GONE
             }
         })
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewModel.onViewDestroyed()
     }
 }

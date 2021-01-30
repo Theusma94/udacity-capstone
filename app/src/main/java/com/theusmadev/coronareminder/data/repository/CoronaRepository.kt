@@ -50,7 +50,6 @@ class CoronaRepository(
             val response = coronaApiService.getCountries("cases").execute()
             val countryList = response.body()?.keys?.toList() ?: listOf()
             val processed = processResponse(response.body())
-            coronaDatabase.coronaDao.deleteCountries()
             coronaDatabase.coronaDao.insertCountries(processed)
             ResponseState.Success(countryList)
         } catch (throwable: Throwable) {
@@ -88,7 +87,6 @@ class CoronaRepository(
         return try {
             val response = coronaApiService.getStates("cases?country=$countryName").execute()
             val processed = processStatesResponse(response.body())
-            coronaDatabase.coronaDao.deleteCountries()
             coronaDatabase.coronaDao.insertStates(processed)
             ResponseState.Success(processed)
         } catch (throwable: Throwable) {

@@ -42,7 +42,7 @@ class SignUpActivity: AppCompatActivity() {
                 if(responseNotNull) {
                     onBackPressed()
                 } else {
-                    //Error
+                    Toast.makeText(this, "Error on register!", Toast.LENGTH_LONG).show()
                 }
             }
         })

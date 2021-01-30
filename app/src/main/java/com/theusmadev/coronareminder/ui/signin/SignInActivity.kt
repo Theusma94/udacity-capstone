@@ -58,6 +58,7 @@ class SignInActivity : AppCompatActivity() {
             isLogged?.let { isLoggedNotNull ->
                 if(isLoggedNotNull) {
                     startActivity(Intent(this, CoronaRemindersActivity::class.java))
+                    finish()
                 }
             }
         })
@@ -93,6 +94,7 @@ class SignInActivity : AppCompatActivity() {
         if(user != null) {
             Log.d("Teste","user ${user.email} logged")
             startActivity(Intent(this, CoronaRemindersActivity::class.java))
+            finish()
         } else {
             Log.d("Teste", "user not logged")
         }

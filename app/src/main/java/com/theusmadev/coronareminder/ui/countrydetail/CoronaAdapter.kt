@@ -16,7 +16,7 @@ class CoronaAdapter: DataBoundListAdapter<CoronaStateData, ItemCountryInfoBindin
             }
 
             override fun areContentsTheSame(oldItem: CoronaStateData, newItem: CoronaStateData): Boolean {
-                return oldItem.id == newItem.id
+                return oldItem.region == newItem.region
             }
         }
 ) {
