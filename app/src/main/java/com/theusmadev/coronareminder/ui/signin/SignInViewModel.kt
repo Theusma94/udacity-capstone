@@ -37,6 +37,9 @@ class SignInViewModel: ViewModel() {
                     passwordContent.value!!
                 )
             )
+        } else {
+            _showLoading.value = false
+            _userLogged.value = false
         }
     }
 

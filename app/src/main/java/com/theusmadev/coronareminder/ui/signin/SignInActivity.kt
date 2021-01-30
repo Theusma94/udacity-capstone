@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -56,9 +57,14 @@ class SignInActivity : AppCompatActivity() {
         })
         viewModel.userLogged.observe(this, Observer { isLogged ->
             isLogged?.let { isLoggedNotNull ->
+                activitySignInBinding.loadingStatus = false
+                activitySignInBinding.invalidateAll()
+
                 if(isLoggedNotNull) {
                     startActivity(Intent(this, CoronaRemindersActivity::class.java))
                     finish()
+                } else {
+                    Toast.makeText(this, "Error on Sign in", Toast.LENGTH_LONG).show()
                 }
             }
         })

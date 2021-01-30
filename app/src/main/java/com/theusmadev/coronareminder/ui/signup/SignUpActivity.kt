@@ -30,6 +30,7 @@ class SignUpActivity: AppCompatActivity() {
         activitySignUpBinding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
         activitySignUpBinding.viewModel = viewModel
         activitySignUpBinding.lifecycleOwner = this
+        activitySignUpBinding.loadingStatus = false
 
         firebaseAuth = FirebaseAuth.getInstance()
 
@@ -37,6 +38,13 @@ class SignUpActivity: AppCompatActivity() {
     }
 
     private fun setupObservers() {
+        viewModel.showLoading.observe(this, Observer { isLoading ->
+            isLoading?.let { isLoadingNotNull ->
+                activitySignUpBinding.loadingStatus = isLoadingNotNull
+                activitySignUpBinding.invalidateAll()
+            }
+        })
+
         viewModel.userCreated.observe(this, Observer { response ->
             response?.let { responseNotNull ->
                 if(responseNotNull) {
@@ -46,6 +54,11 @@ class SignUpActivity: AppCompatActivity() {
                 }
             }
         })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.onClearData()
     }
 
 }
