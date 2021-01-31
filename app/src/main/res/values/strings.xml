@@ -15,7 +15,7 @@
     <string name="see_more_about_country">See more</string>
     <string name="try_again">Try Again</string>
     <string name="going_somewhere_hint">Going somewhere?</string>
-    <string name="create_reminder">Create</string>
+    <string name="create">Create</string>
     <string name="reminder_created">Reminder created!</string>
     <string name="error_on_create_reminder">Error on create reminder</string>
     <string name="title_detail">You going to %1$s?</string>

@@ -14,10 +14,10 @@
 
         <ImageView
             android:id="@+id/refresh_cases"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="@dimen/refresh_size"
+            android:layout_height="@dimen/refresh_size"
+            android:layout_marginEnd="@dimen/default_8"
+            android:layout_marginTop="@dimen/default_16"
             app:layout_constraintVertical_bias=".1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -27,9 +27,9 @@
             android:id="@+id/card_world"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="16dp"
+            android:layout_margin="@dimen/default_16"
+            app:cardCornerRadius="@dimen/default_8"
+            app:cardElevation="@dimen/default_16"
             app:layout_constraintBottom_toTopOf="@id/card_country"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/content_world"
-                android:padding="8dp"
+                android:padding="@dimen/default_8"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -48,7 +48,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/all_the_world"
                     android:textColor="#3A3A3A"
-                    android:textSize="32sp"
+                    android:textSize="@dimen/default_32"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias=".1" />
@@ -56,8 +56,8 @@
                     android:id="@+id/world_confirmed_cases"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:textSize="20sp"
+                    android:layout_marginTop="@dimen/default_4"
+                    android:textSize="@dimen/confirmed_cases_text_size"
                     android:textColor="#585858"
                     app:loading="@{viewModel.isLoading}"
                     app:bg_color_loading='@{"#585858"}'
@@ -68,9 +68,9 @@
 
                 <ImageView
                     android:id="@+id/recovered_image"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_width="@dimen/recovered_cases_size"
+                    android:layout_height="@dimen/recovered_cases_size"
+                    android:layout_marginTop="@dimen/default_32"
                     app:tint="@android:color/holo_green_dark"
                     app:layout_constraintStart_toStartOf="@+id/world_stats_label"
                     app:layout_constraintTop_toBottomOf="@+id/world_confirmed_cases"
@@ -80,11 +80,11 @@
                     android:id="@+id/world_recovered_cases"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="@dimen/recovered_cases_text_size"
                     android:textColor="#949494"
                     app:loading="@{viewModel.isLoading}"
                     app:bg_color_loading='@{"#949494"}'
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="@dimen/default_8"
                     app:layout_constraintBottom_toBottomOf="@+id/recovered_image"
                     app:layout_constraintStart_toEndOf="@+id/recovered_image"
                     app:layout_constraintTop_toTopOf="@+id/recovered_image"
@@ -94,9 +94,9 @@
 
                 <ImageView
                     android:id="@+id/death_image"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_width="@dimen/death_cases_size"
+                    android:layout_height="@dimen/death_cases_size"
+                    android:layout_marginTop="@dimen/default_8"
                     app:tint="@android:color/holo_red_dark"
                     app:layout_constraintStart_toStartOf="@+id/world_stats_label"
                     app:layout_constraintTop_toBottomOf="@+id/recovered_image"
@@ -107,11 +107,11 @@
                     android:id="@+id/world_death_cases"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="@dimen/death_cases_text_size"
                     android:textColor="#949494"
                     app:loading="@{viewModel.isLoading}"
                     app:bg_color_loading='@{"#949494"}'
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="@dimen/default_8"
                     app:layout_constraintBottom_toBottomOf="@+id/death_image"
                     app:layout_constraintStart_toEndOf="@+id/death_image"
                     app:layout_constraintTop_toTopOf="@+id/death_image"
@@ -125,9 +125,9 @@
             android:id="@+id/card_country"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="16dp"
+            android:layout_margin="@dimen/default_16"
+            app:cardCornerRadius="@dimen/default_8"
+            app:cardElevation="@dimen/default_16"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -142,14 +142,14 @@
 
                 <TextView
                     android:id="@+id/country_stats_label"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/default_0"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="@dimen/default_16"
                     android:text="@{viewModel.coronaCountry.region}"
                     android:textColor="#3A3A3A"
-                    android:textSize="32sp"
+                    android:textSize="@dimen/country_states_text_size"
                     app:layout_constraintEnd_toStartOf="@+id/change_country"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -160,7 +160,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/change_country"
                     android:textColor="@android:color/holo_blue_dark"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/change_country_text_size"
                     android:textStyle="italic"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -169,9 +169,9 @@
                     android:id="@+id/country_confirmed_cases"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="@dimen/default_4"
                     android:textColor="#585858"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/confirmed_cases_text_size"
                     app:appendText='@{"Confirmed cases"}'
                     app:bg_color_loading='@{"#585858"}'
                     app:layout_constraintStart_toStartOf="@+id/country_stats_label"
@@ -181,9 +181,9 @@
 
                 <ImageView
                     android:id="@+id/recovered_image_country"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_width="@dimen/recovered_cases_size"
+                    android:layout_height="@dimen/recovered_cases_size"
+                    android:layout_marginTop="@dimen/default_32"
                     app:layout_constraintStart_toStartOf="@+id/country_stats_label"
                     app:layout_constraintTop_toBottomOf="@+id/country_confirmed_cases"
                     app:srcCompat="@drawable/ic_recovered"
@@ -193,9 +193,9 @@
                     android:id="@+id/country_recovered_cases"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="@dimen/default_8"
                     android:textColor="#949494"
-                    android:textSize="14sp"
+                    android:textSize="@dimen/recovered_cases_text_size"
                     app:appendText='@{"Recovered cases"}'
                     app:bg_color_loading='@{"#949494"}'
                     app:layout_constraintBottom_toBottomOf="@+id/recovered_image_country"
@@ -207,9 +207,9 @@
 
                 <ImageView
                     android:id="@+id/death_image_country"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_width="@dimen/death_cases_size"
+                    android:layout_height="@dimen/death_cases_size"
+                    android:layout_marginTop="@dimen/default_8"
                     app:layout_constraintStart_toStartOf="@+id/country_stats_label"
                     app:layout_constraintTop_toBottomOf="@+id/recovered_image_country"
                     app:srcCompat="@drawable/ic_death"
@@ -219,9 +219,9 @@
                     android:id="@+id/country_death_cases"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="@dimen/default_8"
                     android:textColor="#949494"
-                    android:textSize="14sp"
+                    android:textSize="@dimen/death_cases_text_size"
                     app:appendText='@{"Fatal cases"}'
                     app:bg_color_loading='@{"#949494"}'
                     app:layout_constraintBottom_toBottomOf="@+id/death_image_country"
@@ -235,10 +235,10 @@
                     android:id="@+id/more_about_option"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="@dimen/default_16"
                     android:text="@string/see_more_about_country"
                     android:textColor="@android:color/holo_blue_dark"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/see_more_text_size"
                     android:textStyle="italic"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

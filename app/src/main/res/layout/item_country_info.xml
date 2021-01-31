@@ -11,12 +11,12 @@
         android:id="@+id/reminderCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        android:layout_margin="@dimen/margin_reminder_card">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:padding="@dimen/padding_item_country_layout">
 
             <TextView
                 android:id="@+id/world_stats_label"
@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:text="@{coronaState.region}"
                 android:textColor="#3A3A3A"
-                android:textSize="32sp"
+                android:textSize="@dimen/default_32"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias=".1" />
@@ -32,8 +32,8 @@
                 android:id="@+id/world_confirmed_cases"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:textSize="20sp"
+                android:layout_marginTop="@dimen/default_4"
+                android:textSize="@dimen/confirmed_cases_text_size"
                 android:textColor="#585858"
                 app:appendText='@{"Confirmed cases"}'
                 app:maskValue="@{String.valueOf(coronaState.confirmed)}"
@@ -42,9 +42,9 @@
 
             <ImageView
                 android:id="@+id/recovered_image"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginTop="32dp"
+                android:layout_width="@dimen/recovered_cases_size"
+                android:layout_height="@dimen/recovered_cases_size"
+                android:layout_marginTop="@dimen/default_32"
                 app:tint="@android:color/holo_green_dark"
                 app:layout_constraintStart_toStartOf="@+id/world_stats_label"
                 app:layout_constraintTop_toBottomOf="@+id/world_confirmed_cases"
@@ -54,9 +54,9 @@
                 android:id="@+id/world_recovered_cases"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:textSize="@dimen/recovered_cases_text_size"
                 android:textColor="#949494"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="@dimen/default_8"
                 app:layout_constraintBottom_toBottomOf="@+id/recovered_image"
                 app:layout_constraintStart_toEndOf="@+id/recovered_image"
                 app:layout_constraintTop_toTopOf="@+id/recovered_image"
@@ -66,9 +66,9 @@
 
             <ImageView
                 android:id="@+id/death_image"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginTop="8dp"
+                android:layout_width="@dimen/death_cases_size"
+                android:layout_height="@dimen/death_cases_size"
+                android:layout_marginTop="@dimen/default_8"
                 app:tint="@android:color/holo_red_dark"
                 app:layout_constraintStart_toStartOf="@+id/world_stats_label"
                 app:layout_constraintTop_toBottomOf="@+id/recovered_image"
@@ -79,9 +79,9 @@
                 android:id="@+id/world_death_cases"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:textSize="@dimen/death_cases_text_size"
                 android:textColor="#949494"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="@dimen/default_8"
                 app:layout_constraintBottom_toBottomOf="@+id/death_image"
                 app:layout_constraintStart_toEndOf="@+id/death_image"
                 app:layout_constraintTop_toTopOf="@+id/death_image"

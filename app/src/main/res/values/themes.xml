@@ -17,10 +17,10 @@
     <style name="SpinnerBorder">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">16dp</item>
-        <item name="android:layout_marginEnd">16dp</item>
-        <item name="android:paddingTop">4dp</item>
-        <item name="android:paddingBottom">4dp</item>
+        <item name="android:layout_marginStart">@dimen/default_16</item>
+        <item name="android:layout_marginEnd">@dimen/default_16</item>
+        <item name="android:paddingTop">@dimen/default_4</item>
+        <item name="android:paddingBottom">@dimen/default_4</item>
         <item name="android:background">@drawable/border_input</item>
     </style>
 

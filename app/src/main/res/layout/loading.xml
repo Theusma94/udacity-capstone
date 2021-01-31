@@ -10,7 +10,7 @@
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:background="#CC000000"
-        android:translationZ="16dp"
+        android:translationZ="@dimen/default_16"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
