@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1062237725162",
+    "project_id": "corona-reminder",
+    "storage_bucket": "corona-reminder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1062237725162:android:76cf33c20aaa34fec45293",
+        "android_client_info": {
+          "package_name": "com.theusmadev.coronareminder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1062237725162-8u1j854g7uvm5hae3f9grhs1qhisuqc9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.theusmadev.coronareminder",
+            "certificate_hash": "1bba42915745af38c8530072f974b60f26937ad2"
+          }
+        },
+        {
+          "client_id": "1062237725162-ls05tvjgc3p9m9kahlaivp00l8spr0qr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqRvZU8Gqizsdah8U6rmr-Bvv2a2K0XcI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1062237725162-ls05tvjgc3p9m9kahlaivp00l8spr0qr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
