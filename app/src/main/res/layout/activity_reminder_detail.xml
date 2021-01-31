@@ -39,8 +39,8 @@
 
         <ImageView
             android:id="@+id/first_tooltip"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="@dimen/tooltip_size"
+            android:layout_height="@dimen/tooltip_size"
             app:srcCompat="@drawable/covid1" />
 
         <ImageView
@@ -78,6 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@android:string/ok"
+            style="@style/ButtonStyle"
             android:layout_margin="@dimen/margin_finalize_detail_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

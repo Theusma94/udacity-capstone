@@ -38,4 +38,6 @@
     <dimen name="time_item_reminder_margin_top">24dp</dimen>
     <dimen name="alarm_size">25dp</dimen>
     <dimen name="world_text_size">32sp</dimen>
+    <dimen name="margin_start_after_anim">32dp</dimen>
+    <dimen name="margin_top_motion_scene">24dp</dimen>
 </resources>

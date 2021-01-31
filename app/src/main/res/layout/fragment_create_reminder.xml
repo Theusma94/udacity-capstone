@@ -13,7 +13,7 @@
 
         <EditText
             android:id="@+id/input_reminder_title"
-            style="@style/EditTextOpactity"
+            style="@style/InputStyle"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="32dp"
@@ -70,8 +70,7 @@
             android:layout_width="180dp"
             android:layout_height="60dp"
             android:text="@string/create"
-            android:backgroundTint="@color/primary_color"
-            android:textColor="@color/accent"
+            style="@style/ButtonStyle"
             android:onClick="@{ () -> viewModel.checkFields()}"
             app:layout_constraintVertical_bias=".8"
             app:layout_constraintBottom_toBottomOf="parent"
