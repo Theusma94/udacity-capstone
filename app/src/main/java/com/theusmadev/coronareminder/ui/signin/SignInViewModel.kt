@@ -57,4 +57,11 @@ class SignInViewModel: ViewModel() {
                     }
                 }
     }
+
+    fun onUserLogged() {
+        _userLogged.value = null
+        _showLoading.value = null
+        emailContent.value = ""
+        passwordContent.value = ""
+    }
 }

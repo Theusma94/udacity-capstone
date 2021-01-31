@@ -77,10 +77,10 @@ class CoronaReminderApp: Application() {
                 CalendarUtils()
             }
 
-            viewModel {
+            single {
                 SignInViewModel()
             }
-            viewModel {
+            single {
                 SignUpViewModel()
             }
             viewModel {

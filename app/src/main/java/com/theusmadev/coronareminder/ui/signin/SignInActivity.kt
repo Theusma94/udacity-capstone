@@ -61,6 +61,7 @@ class SignInActivity : AppCompatActivity() {
                 activitySignInBinding.invalidateAll()
 
                 if(isLoggedNotNull) {
+                    viewModel.onUserLogged()
                     startActivity(Intent(this, CoronaRemindersActivity::class.java))
                     finish()
                 } else {

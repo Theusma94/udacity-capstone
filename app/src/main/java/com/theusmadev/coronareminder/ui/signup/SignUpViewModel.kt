@@ -47,6 +47,8 @@ class SignUpViewModel: ViewModel() {
     fun onClearData() {
         _showLoading.value = null
         _userCreated.value = null
+        emailRegister.value = ""
+        passwordRegister.value = ""
     }
 
 }
