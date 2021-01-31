@@ -20,4 +20,17 @@
     <string name="error_on_create_reminder">Error on create reminder</string>
     <string name="title_detail">You going to %1$s?</string>
     <string name="error_parse">ERROR ON PARSE DATA</string>
+    <string name="dashboard_menu">Dashboard</string>
+    <string name="create_menu">Create</string>
+    <string name="history_menu">History</string>
+    <string name="logout_menu">Logout</string>
+    <string name="calendar_circle_shape_description">calendar circle shape</string>
+    <string name="calendar_icon_description">calendar icon</string>
+    <string name="google_icon_for_sign_in_with_google_description">google icon for sign in with google</string>
+    <string name="covid_recommendation_use_mask_description">covid recommendation use mask</string>
+    <string name="covid_recommendation_clean_disinfect_description">covid recommendation clean disinfect</string>
+    <string name="covid_recommendation_wash_hands_description">covid recommendation wash hands</string>
+    <string name="covid_recomendation_keep_distance_description">covid recomendation keep distance</string>
+    <string name="covid_recommendation_avoid_touching_description">covid recommendation avoid touching</string>
+    <string name="covid_recommendation_stay_home_if_seek_description">covid recommendation stay home if seek</string>
 </resources>

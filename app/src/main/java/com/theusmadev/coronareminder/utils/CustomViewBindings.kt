@@ -1,18 +1,13 @@
 package com.theusmadev.coronareminder.utils
 
-import android.graphics.Color
-import android.text.format.DateFormat.format
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.ColorInt
-import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.squareup.picasso.Picasso
 import com.theusmadev.coronareminder.R
-import org.w3c.dom.Text
 import java.lang.StringBuilder
-import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 

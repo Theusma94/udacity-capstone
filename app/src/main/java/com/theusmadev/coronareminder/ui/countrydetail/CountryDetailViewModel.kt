@@ -1,6 +1,5 @@
 package com.theusmadev.coronareminder.ui.countrydetail
 
-import android.util.Log
 import androidx.lifecycle.*
 import com.theusmadev.coronareminder.data.local.model.CoronaStateData
 import com.theusmadev.coronareminder.data.local.prefs.PreferencesHelper
@@ -14,19 +13,22 @@ class CountryDetailViewModel(
         private val preferencesHelper: PreferencesHelper,
         private val coronaRepository: CoronaRepository): ViewModel() {
 
-    private val _statesList = MutableLiveData<List<CoronaStateData>>()
     val statesList: LiveData<List<CoronaStateData>> = coronaRepository.getStates().asLiveData()
 
     val statusLoading = MutableLiveData<Boolean>(false)
+
     private val _dataNotFound = MutableLiveData<Boolean>(false)
     val dataNotFound: LiveData<Boolean> = _dataNotFound
 
     var countryChoosed = ""
-
     var job: Job? = null
 
     fun startJob() {
         job?.start()
+    }
+
+    fun cancelJob() {
+        job?.cancel()
     }
 
     fun getCountryCoronaInfo() {
@@ -61,9 +63,4 @@ class CountryDetailViewModel(
     fun retry() {
         getCountryCoronaInfo()
     }
-
-    fun onViewDestroyed() {
-        job?.cancel()
-    }
-
 }

@@ -5,7 +5,6 @@ import android.app.Application
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import androidx.core.app.AlarmManagerCompat
 import androidx.lifecycle.*
 import com.theusmadev.coronareminder.data.local.model.ReminderDataItem
@@ -18,7 +17,7 @@ import java.util.*
 
 class CreateReminderViewModel (
         val app: Application,
-        val reminderRepository: ReminderRepository,
+        private val reminderRepository: ReminderRepository,
         private val calendarUtils: CalendarUtils): AndroidViewModel(app) {
 
     val titleReminder = MutableLiveData<String>()

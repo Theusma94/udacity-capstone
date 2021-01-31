@@ -50,6 +50,6 @@ class CountryDetailFragment: Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        viewModel.onViewDestroyed()
+        viewModel.cancelJob()
     }
 }

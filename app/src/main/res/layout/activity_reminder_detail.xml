@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
@@ -41,37 +41,43 @@
             android:id="@+id/first_tooltip"
             android:layout_width="@dimen/tooltip_size"
             android:layout_height="@dimen/tooltip_size"
-            app:srcCompat="@drawable/covid1" />
+            app:srcCompat="@drawable/covid1"
+            android:contentDescription="@string/covid_recommendation_use_mask_description" />
 
         <ImageView
             android:id="@+id/second_tooltip"
             android:layout_width="@dimen/tooltip_size"
             android:layout_height="@dimen/tooltip_size"
-            app:srcCompat="@drawable/covid2" />
+            app:srcCompat="@drawable/covid2"
+            android:contentDescription="@string/covid_recommendation_clean_disinfect_description" />
 
         <ImageView
             android:id="@+id/third_tooltip"
             android:layout_width="@dimen/tooltip_size"
             android:layout_height="@dimen/tooltip_size"
-            app:srcCompat="@drawable/covid3" />
+            app:srcCompat="@drawable/covid3"
+            android:contentDescription="@string/covid_recommendation_wash_hands_description" />
 
         <ImageView
             android:id="@+id/fourth_tooltip"
             android:layout_width="@dimen/tooltip_size"
             android:layout_height="@dimen/tooltip_size"
-            app:srcCompat="@drawable/covid4" />
+            app:srcCompat="@drawable/covid4"
+            android:contentDescription="@string/covid_recomendation_keep_distance_description" />
 
         <ImageView
             android:id="@+id/fifth_tooltip"
             android:layout_width="@dimen/tooltip_size"
             android:layout_height="@dimen/tooltip_size"
-            app:srcCompat="@drawable/covid5" />
+            app:srcCompat="@drawable/covid5"
+            android:contentDescription="@string/covid_recommendation_avoid_touching_description" />
 
         <ImageView
             android:id="@+id/sixth_tooltip"
             android:layout_width="@dimen/tooltip_size"
             android:layout_height="@dimen/tooltip_size"
-            app:srcCompat="@drawable/covid6" />
+            app:srcCompat="@drawable/covid6"
+            android:contentDescription="@string/covid_recommendation_stay_home_if_seek_description" />
         
         <Button
             android:id="@+id/button_finalize"

@@ -6,12 +6,6 @@ import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 
-/**
- * A generic RecyclerView adapter that uses Data Binding & DiffUtil.
- *
- * @param <T> Type of the items in the list
- * @param <V> The type of the ViewDataBinding
-</V></T> */
 abstract class DataBoundListAdapter<T, V : ViewDataBinding>(
     diffCallback: DiffUtil.ItemCallback<T>
 ) : ListAdapter<T, DataBoundViewHolder<V>>(

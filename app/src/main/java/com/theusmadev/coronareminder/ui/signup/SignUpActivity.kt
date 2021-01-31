@@ -1,19 +1,12 @@
 package com.theusmadev.coronareminder.ui.signup
 
-import android.R.attr.password
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.theusmadev.coronareminder.R
-import com.theusmadev.coronareminder.data.User
 import com.theusmadev.coronareminder.databinding.ActivitySignUpBinding
 import org.koin.android.ext.android.inject
 

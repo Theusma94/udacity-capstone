@@ -1,6 +1,5 @@
 package com.theusmadev.coronareminder.ui.dashboard
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,17 +8,14 @@ import com.theusmadev.coronareminder.data.local.model.CoronaCountryData
 import com.theusmadev.coronareminder.data.local.prefs.PreferencesHelper
 import com.theusmadev.coronareminder.data.repository.CoronaRepository
 import com.theusmadev.coronareminder.utils.ResponseState
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import retrofit2.Response
 
 class DashboardViewModel (
-        val preferencesHelper: PreferencesHelper,
-        val coronaRepository: CoronaRepository): ViewModel() {
+        private val preferencesHelper: PreferencesHelper,
+        private val coronaRepository: CoronaRepository): ViewModel() {
 
     val coronaGlobal = MutableLiveData<CoronaCountryData>()
     val coronaCountry = MutableLiveData<CoronaCountryData>()

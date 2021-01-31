@@ -13,8 +13,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class RemindersViewModel(
-    val reminderRepository: ReminderRepository,
-    val dispatcher: CoroutineDispatcher = Dispatchers.IO): ViewModel() {
+        private val reminderRepository: ReminderRepository,
+        private val dispatcher: CoroutineDispatcher = Dispatchers.IO): ViewModel() {
 
     val statusLoading = MutableLiveData<Boolean>()
 
