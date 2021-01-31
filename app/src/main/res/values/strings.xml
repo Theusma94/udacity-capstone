@@ -19,4 +19,5 @@
     <string name="reminder_created">Reminder created!</string>
     <string name="error_on_create_reminder">Error on create reminder</string>
     <string name="title_detail">You going to %1$s?</string>
+    <string name="error_parse">ERROR ON PARSE DATA</string>
 </resources>

@@ -37,4 +37,5 @@
     <dimen name="time_item_reminder_text_size">16sp</dimen>
     <dimen name="time_item_reminder_margin_top">24dp</dimen>
     <dimen name="alarm_size">25dp</dimen>
+    <dimen name="world_text_size">32sp</dimen>
 </resources>

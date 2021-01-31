@@ -4,6 +4,8 @@ import android.graphics.Color
 import android.text.format.DateFormat.format
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.squareup.picasso.Picasso
@@ -45,9 +47,9 @@ object CustomViewBindings {
 
     @BindingAdapter(value = ["loading","bg_color_loading"])
     @JvmStatic
-    fun TextView.applyLoading(loading: Boolean, color: String) {
+    fun TextView.applyLoading(loading: Boolean, @ColorInt bgColor: Int) {
         if(loading) {
-            this.setBackgroundColor(Color.parseColor(color))
+            this.setBackgroundColor(bgColor)
         } else {
             this.setBackgroundColor(ContextCompat.getColor(this.context, android.R.color.transparent))
         }
@@ -73,7 +75,7 @@ object CustomViewBindings {
             val date = Date(it)
             this.text = formatter.format(date)
         } ?: run {
-            this.text = "ERROR ON PARSE DATA"
+            this.text = context.getString(R.string.error_parse)
         }
 
     }

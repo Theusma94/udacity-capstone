@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/default_4"
                 android:text="@{item.title}"
-                android:textColor="@color/black"
+                android:textColor="@android:color/black"
                 android:textSize="@dimen/title_item_reminder_text_size"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
