@@ -23,6 +23,29 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_refresh" />
 
+        <TextView
+            android:id="@+id/corona_stats_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif-monospace"
+            android:text="CORONA STATS"
+            android:textSize="18sp"
+            android:textColor="@color/primary_color"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/card_world"
+            app:layout_constraintStart_toStartOf="@+id/card_world" />
+
+        <ImageView
+            android:id="@+id/info_covid"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:tint="@color/primary_color"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/corona_stats_label"
+            app:layout_constraintStart_toEndOf="@+id/corona_stats_label"
+            app:layout_constraintTop_toTopOf="@+id/corona_stats_label"
+            app:srcCompat="@drawable/ic_info" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/card_world"
             android:layout_width="match_parent"
