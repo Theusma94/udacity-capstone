@@ -2,6 +2,7 @@ package com.theusmadev.coronareminder.ui.dashboard
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -26,6 +28,7 @@ class DashboardFragment : Fragment() {
 
     lateinit var binding: FragmentDashboardBinding
     lateinit var animator: ObjectAnimator
+    lateinit var dialogBuilder: AlertDialog.Builder
 
     @ExperimentalCoroutinesApi
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -36,6 +39,7 @@ class DashboardFragment : Fragment() {
         animator = ObjectAnimator.ofFloat(binding.refreshCases, View.ROTATION, -360f, 0f)
         animator.duration = 1000
         animator.repeatCount = Animation.INFINITE
+        dialogBuilder = AlertDialog.Builder(requireContext())
 
         viewModel.startJob()
         viewModel.getCoronaInfo()
@@ -69,7 +73,25 @@ class DashboardFragment : Fragment() {
         binding.moreAboutOption.setOnClickListener {
             findNavController().navigate(DashboardFragmentDirections.actionDashboardFragmentToCountryDetailFragment())
         }
+
+        binding.infoCovid.setOnClickListener {
+            val viewToShow = generateView()
+            dialogBuilder.setTitle("About API")
+                    .setView(viewToShow)
+                    .setPositiveButton("Ok") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .setCancelable(false)
+                    .create()
+                    .show()
+        }
         return binding.root
+    }
+
+    private fun generateView(): View {
+        val layout = View.inflate(requireContext(), R.layout.message_about_api, null)
+        layout.findViewById<TextView>(R.id.hyperlink).movementMethod = LinkMovementMethod.getInstance()
+        return layout
     }
 
     private fun setupObservers() {

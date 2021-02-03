@@ -33,4 +33,5 @@
     <string name="covid_recomendation_keep_distance_description">covid recomendation keep distance</string>
     <string name="covid_recommendation_avoid_touching_description">covid recommendation avoid touching</string>
     <string name="covid_recommendation_stay_home_if_seek_description">covid recommendation stay home if seek</string>
+    <string name="refer_api">Corona virus data is used from <a href="https://github.com/M-Media-Group/Covid-19-API">this</a> API</string>
 </resources>
