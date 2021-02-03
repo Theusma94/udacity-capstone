@@ -60,6 +60,9 @@ class DashboardViewModel (
 
     fun clearSelectedCountry() {
         preferencesHelper.setCountryChoosed("")
+        viewModelScope.launch {
+            coronaRepository.clearStateDatabase()
+        }
         checkCountrySelected()
     }
 

@@ -112,4 +112,10 @@ class CoronaRepository(
         }
         return dataToSave
     }
+
+    suspend fun clearStateDatabase(dispatcher: CoroutineDispatcher = Dispatchers.IO) {
+        withContext(dispatcher) {
+            coronaDatabase.coronaDao.deleteStates()
+        }
+    }
 }

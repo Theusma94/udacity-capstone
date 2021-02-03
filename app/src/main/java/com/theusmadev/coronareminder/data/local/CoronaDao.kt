@@ -26,4 +26,7 @@ interface CoronaDao {
     @Query("SELECT * FROM corona_states")
     fun getListOfStates(): Flow<List<CoronaStateData>>
 
+    @Query("DELETE FROM corona_states")
+    fun deleteStates()
+
 }
