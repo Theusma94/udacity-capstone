@@ -35,7 +35,11 @@ class CoronaRemindersActivity: AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
         toolbar.title = ""
         setSupportActionBar(toolbar)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
+        appBarConfiguration = AppBarConfiguration(setOf(
+                R.id.dashboard_fragment,
+                R.id.create_reminder_fragment,
+                R.id.history_fragment
+        ))
         toolbar.setupWithNavController(navController, appBarConfiguration)
         binding.bottomNavigation.setupWithNavController(Navigation.findNavController(this, R.id.nav_host_fragment))
     }
