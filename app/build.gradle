@@ -7,6 +7,12 @@ plugins {
     id 'com.google.gms.google-services'
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+def keyAliasName = properties.getProperty('key_alias_name')
+def keyAliasPassword = properties.getProperty('key_alias_password')
+def keyStorePassword = properties.getProperty('key_store_password')
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
@@ -22,9 +28,19 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        key {
+            storeFile file('../upload-keys/keystore.jks')
+            keyAlias keyAliasName
+            keyPassword keyAliasPassword
+            storePassword keyStorePassword
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.key
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
