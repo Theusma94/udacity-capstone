@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.theusmadev.coronareminder.R
 import com.theusmadev.coronareminder.databinding.FragmentCreateReminderBinding
+import com.theusmadev.coronareminder.utils.AdHelper
 import com.theusmadev.coronareminder.utils.CalendarListener
 import com.theusmadev.coronareminder.utils.CalendarUtils
 import org.koin.android.ext.android.inject
@@ -19,6 +20,7 @@ class CreateReminderFragment : Fragment(), CalendarListener {
 
     val viewModel: CreateReminderViewModel by inject()
     private val calendarUtils: CalendarUtils by inject()
+    private lateinit var adHelper: AdHelper
 
     lateinit var binding: FragmentCreateReminderBinding
 
@@ -28,6 +30,8 @@ class CreateReminderFragment : Fragment(), CalendarListener {
         viewLifecycleOwner.lifecycle.addObserver(calendarUtils)
         binding.viewModel = viewModel
 
+        adHelper = AdHelper(requireContext())
+
         calendarUtils.setUp(this)
 
         binding.shapeCalendar.setOnClickListener {
@@ -35,7 +39,7 @@ class CreateReminderFragment : Fragment(), CalendarListener {
         }
 
         setupObservers()
-
+        adHelper.initInterstitialAd()
         return binding.root
     }
 
@@ -44,6 +48,7 @@ class CreateReminderFragment : Fragment(), CalendarListener {
             isCreated?.let {
                 if(it) {
                     findNavController().navigate(CreateReminderFragmentDirections.actionCreateReminderFragmentToDashboardFragment())
+                    adHelper.showInterstitialAd(requireActivity())
                     viewModel.onReminderCreated()
                     Toast.makeText(requireContext(), getString(R.string.reminder_created), Toast.LENGTH_LONG).show()
                 } else {

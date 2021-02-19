@@ -9,6 +9,13 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Setup Ad Properties
+          command: |
+            echo AD_APP_ID=$AD_APP_ID >> ad.properties
+            echo AD_INTER_ID=$AD_INTER_ID >> ad.properties
+            echo AD_BANNER_ID=$AD_BANNER_ID >> ad.properties
+      - run:
+          name: Setup Local Properties
           command: echo > local.properties
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}

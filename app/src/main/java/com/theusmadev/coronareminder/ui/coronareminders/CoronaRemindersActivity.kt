@@ -19,18 +19,24 @@ import com.google.firebase.auth.FirebaseAuth
 import com.theusmadev.coronareminder.R
 import com.theusmadev.coronareminder.databinding.ActivityCoronaRemindersBinding
 import com.theusmadev.coronareminder.ui.signin.SignInActivity
+import com.theusmadev.coronareminder.utils.AdCallback
+import com.theusmadev.coronareminder.utils.AdHelper
+import org.koin.android.ext.android.inject
 
 
-class CoronaRemindersActivity: AppCompatActivity() {
+class CoronaRemindersActivity: AppCompatActivity(), AdCallback {
 
     private lateinit var binding: ActivityCoronaRemindersBinding
     private lateinit var toolbar: Toolbar
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
+    private lateinit var adHelper: AdHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_corona_reminders)
+        adHelper = AdHelper(this)
+
         navController = findNavController(R.id.nav_host_fragment)
         toolbar = findViewById(R.id.toolbar)
         toolbar.title = ""
@@ -42,6 +48,9 @@ class CoronaRemindersActivity: AppCompatActivity() {
         ))
         toolbar.setupWithNavController(navController, appBarConfiguration)
         binding.bottomNavigation.setupWithNavController(Navigation.findNavController(this, R.id.nav_host_fragment))
+
+        adHelper.setListener(this)
+        adHelper.initInterstitialAd()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -67,6 +76,12 @@ class CoronaRemindersActivity: AppCompatActivity() {
         ).signOut().addOnCompleteListener {
             startActivity(Intent(this, SignInActivity::class.java))
             finish()
+        }
+    }
+
+    override fun interstitialFinalized(isCreated: Boolean) {
+        if(isCreated) {
+            adHelper.showInterstitialAd(this)
         }
     }
 
