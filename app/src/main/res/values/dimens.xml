@@ -17,7 +17,7 @@
     <dimen name="dropdown_item_height">40dp</dimen>
     <dimen name="dropdown_item_text_size">18sp</dimen>
     <dimen name="simple_item_text_size">18sp</dimen>
-    <dimen name="country_flag_height">250dp</dimen>
+    <dimen name="country_flag_height">150dp</dimen>
     <dimen name="data_not_found_size">200dp</dimen>
     <dimen name="try_again_height">60dp</dimen>
     <dimen name="refresh_size">40dp</dimen>
