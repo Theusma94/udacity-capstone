@@ -14,16 +14,24 @@
         android:roundIcon="@mipmap/ic_corona_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CoronaReminder">
-        <activity android:name=".ui.signin.SignInActivity">
+        <activity
+            android:name=".ui.signin.SignInActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.signup.SignUpActivity"/>
-        <activity android:name=".ui.coronareminders.CoronaRemindersActivity"/>
-        <activity android:name=".ui.coronareminders.ReminderDetailActivity"/>
+        <activity
+            android:name=".ui.signup.SignUpActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.coronareminders.CoronaRemindersActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.coronareminders.ReminderDetailActivity"
+            android:screenOrientation="portrait"/>
 
         <receiver
             android:name=".data.receiver.AlarmReceiver"
