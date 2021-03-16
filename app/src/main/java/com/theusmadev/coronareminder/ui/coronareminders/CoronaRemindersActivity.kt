@@ -13,9 +13,12 @@ import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
+import com.theusmadev.coronareminder.BuildConfig
 import com.theusmadev.coronareminder.R
 import com.theusmadev.coronareminder.databinding.ActivityCoronaRemindersBinding
 import com.theusmadev.coronareminder.ui.signin.SignInActivity
@@ -36,6 +39,8 @@ class CoronaRemindersActivity: AppCompatActivity(), AdCallback {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_corona_reminders)
         adHelper = AdHelper(this)
+        val adRequest = AdRequest.Builder().build()
+        binding.adBanner.loadAd(adRequest)
 
         navController = findNavController(R.id.nav_host_fragment)
         toolbar = findViewById(R.id.toolbar)

@@ -16,13 +16,14 @@ class AdHelper(val context: Context) {
     private var interstitialAd: InterstitialAd? = null
     private var listener: AdCallback? = null
 
+    init {
+        MobileAds.initialize(context)
+    }
     fun setListener(listener: AdCallback) {
         this.listener = listener
     }
 
     fun initInterstitialAd() {
-        MobileAds.initialize(context)
-
         if(interstitialAd == null) {
             InterstitialAd.load(context,BuildConfig.AD_INTER_ID,
                 AdRequest.Builder().build(), object:

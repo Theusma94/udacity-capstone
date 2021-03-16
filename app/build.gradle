@@ -17,6 +17,7 @@ Properties adProperties = new Properties()
 adProperties.load(project.rootProject.file('ad.properties').newDataInputStream())
 def adAppId = adProperties.getProperty('AD_APP_ID')
 def adInterId = adProperties.getProperty('AD_INTER_ID')
+def adBannerId = adProperties.getProperty('AD_BANNER_ID')
 
 android {
     compileSdkVersion 30
@@ -32,6 +33,7 @@ android {
         android.defaultConfig.vectorDrawables.useSupportLibrary true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "AD_INTER_ID", "\""+adInterId+"\""
+        resValue "string", "ad_banner_id", "\""+adBannerId+"\""
         resValue "string", "app_id", "\""+adAppId+"\""
     }
 
