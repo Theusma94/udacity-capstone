@@ -9,6 +9,13 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Setup Ad Properties
+          command: |
+            echo AD_APP_ID=$AD_APP_ID >> ad.properties
+            echo AD_INTER_ID=$AD_INTER_ID >> ad.properties
+            echo AD_BANNER_ID=$AD_BANNER_ID >> ad.properties
+      - run:
+          name: Setup Local Properties
           command: echo > local.properties
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
@@ -28,11 +35,6 @@ jobs:
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/ 
           path: app/build/reports
           destination: reports
-      - run:
-          name: Assemble Debug
-          command: ./gradlew assembleDebug
-      - store_artifacts:
-          path: app/build/outputs/
       - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: app/build/test-results
       # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
