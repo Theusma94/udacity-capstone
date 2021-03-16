@@ -14,17 +14,14 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
-import com.theusmadev.coronareminder.BuildConfig
 import com.theusmadev.coronareminder.R
 import com.theusmadev.coronareminder.databinding.ActivityCoronaRemindersBinding
 import com.theusmadev.coronareminder.ui.signin.SignInActivity
 import com.theusmadev.coronareminder.utils.AdCallback
 import com.theusmadev.coronareminder.utils.AdHelper
-import org.koin.android.ext.android.inject
 
 
 class CoronaRemindersActivity: AppCompatActivity(), AdCallback {
