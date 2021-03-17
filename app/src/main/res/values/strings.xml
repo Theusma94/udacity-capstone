@@ -40,4 +40,8 @@
     <string name="fatal_cases">Fatal cases</string>
     <string name="forgot_password">Forgot password?</string>
     <string name="about_api">About API</string>
+    <string name="reset_password_title">Reset password</string>
+    <string name="email_forgot_hint">Insert email</string>
+    <string name="message_reset_password_success">Email to reset password sended</string>
+    <string name="message_reset_password_fail">Error sending reset password</string>
 </resources>

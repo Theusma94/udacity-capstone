@@ -41,4 +41,8 @@
     <string name="fatal_cases">Casos fatais</string>
     <string name="forgot_password">Esqueceu a senha?</string>
     <string name="about_api">Sobre a API</string>
+    <string name="reset_password_title">Redefinir senha</string>
+    <string name="email_forgot_hint">Insira seu email</string>
+    <string name="message_reset_password_success">Email de redefinição enviado</string>
+    <string name="message_reset_password_fail">Erro ao enviar email de redefinição</string>
 </resources>
