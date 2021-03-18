@@ -22,9 +22,12 @@ import com.theusmadev.coronareminder.databinding.ActivityCoronaRemindersBinding
 import com.theusmadev.coronareminder.ui.signin.SignInActivity
 import com.theusmadev.coronareminder.utils.AdCallback
 import com.theusmadev.coronareminder.utils.AdHelper
+import org.koin.android.ext.android.inject
 
 
 class CoronaRemindersActivity: AppCompatActivity(), AdCallback {
+
+    private val viewModel: MainViewModel by inject()
 
     private lateinit var binding: ActivityCoronaRemindersBinding
     private lateinit var toolbar: Toolbar
@@ -64,6 +67,7 @@ class CoronaRemindersActivity: AppCompatActivity(), AdCallback {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.logout -> {
+                viewModel.clearData()
                 makeLogout()
             }
         }

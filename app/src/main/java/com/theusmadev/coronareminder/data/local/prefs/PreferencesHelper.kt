@@ -16,6 +16,10 @@ class PreferencesHelper(private val context: Context) {
         return sharedPreferences.getString(KEY_COUNTRY,"")!!
     }
 
+    fun clearCountryChoosed() {
+        sharedPreferences.edit().clear().apply()
+    }
+
     companion object {
         const val KEY_COUNTRY = "country_choosed"
     }

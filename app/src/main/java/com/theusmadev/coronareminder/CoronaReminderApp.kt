@@ -7,6 +7,7 @@ import com.theusmadev.coronareminder.data.local.prefs.PreferencesHelper
 import com.theusmadev.coronareminder.data.network.CoronaApiService
 import com.theusmadev.coronareminder.data.repository.CoronaRepository
 import com.theusmadev.coronareminder.data.repository.ReminderRepository
+import com.theusmadev.coronareminder.ui.coronareminders.MainViewModel
 import com.theusmadev.coronareminder.ui.coronareminders.createreminder.CreateReminderViewModel
 import com.theusmadev.coronareminder.ui.coronareminders.history.RemindersViewModel
 import com.theusmadev.coronareminder.ui.countrydetail.CountryDetailViewModel
@@ -94,6 +95,9 @@ class CoronaReminderApp: Application() {
             }
             viewModel {
                 CountryDetailViewModel(get(),get())
+            }
+            viewModel {
+                MainViewModel(get(), get())
             }
         }
 

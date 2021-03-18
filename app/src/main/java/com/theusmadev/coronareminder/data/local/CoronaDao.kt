@@ -29,4 +29,7 @@ interface CoronaDao {
     @Query("DELETE FROM corona_states")
     fun deleteStates()
 
+    @Query("DELETE FROM corona_country")
+    fun deleteCountries()
+
 }
