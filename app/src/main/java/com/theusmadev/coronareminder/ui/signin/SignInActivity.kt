@@ -57,7 +57,7 @@ class SignInActivity : AppCompatActivity() {
                         }
                         padding = dip(16)
                         okButton {
-                            viewModel.passwordReset(emailForgot.text.toString())
+                            viewModel.passwordReset(emailForgot.text.toString().trim())
                             it.dismiss()
                         }
                     }
