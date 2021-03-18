@@ -85,6 +85,9 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$junitTestVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 
+    //Anko
+    implementation "org.jetbrains.anko:anko:$ankoVersion"
+
     //Room dependencies
     implementation "androidx.room:room-ktx:$roomVersion"
     implementation "androidx.room:room-runtime:$roomVersion"

@@ -76,9 +76,9 @@ class DashboardFragment : Fragment() {
 
         binding.infoCovid.setOnClickListener {
             val viewToShow = generateView()
-            dialogBuilder.setTitle("About API")
+            dialogBuilder.setTitle(getString(R.string.about_api))
                     .setView(viewToShow)
-                    .setPositiveButton("Ok") { dialog, _ ->
+                    .setPositiveButton(android.R.string.ok) { dialog, _ ->
                         dialog.dismiss()
                     }
                     .setCancelable(false)

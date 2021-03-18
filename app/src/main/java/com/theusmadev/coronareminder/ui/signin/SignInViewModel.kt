@@ -16,6 +16,9 @@ class SignInViewModel: ViewModel() {
     private val _showLoading = MutableLiveData<Boolean?>()
     val showLoading: LiveData<Boolean?> = _showLoading
 
+    private val _sendResetPassword = MutableLiveData<Boolean?>()
+    val sendResetPassword: LiveData<Boolean?> = _sendResetPassword
+
     val emailContent = MutableLiveData<String>()
     val passwordContent = MutableLiveData<String>()
 
@@ -58,9 +61,18 @@ class SignInViewModel: ViewModel() {
                 }
     }
 
+    fun passwordReset(email: String) {
+        firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener {
+            _sendResetPassword.value = true
+        }.addOnFailureListener {
+            _sendResetPassword.value = false
+        }
+    }
+
     fun onUserLogged() {
         _userLogged.value = null
         _showLoading.value = null
+        _sendResetPassword.value = null
         emailContent.value = ""
         passwordContent.value = ""
     }

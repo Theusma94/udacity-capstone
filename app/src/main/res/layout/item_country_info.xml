@@ -35,7 +35,7 @@
                 android:layout_marginTop="@dimen/default_4"
                 android:textSize="@dimen/confirmed_cases_text_size"
                 android:textColor="@color/primary_text_color"
-                app:appendText='@{"Confirmed cases"}'
+                app:appendText='@{@string/confirmed_cases}'
                 app:maskValue="@{String.valueOf(coronaState.confirmed)}"
                 app:layout_constraintStart_toStartOf="@+id/world_stats_label"
                 app:layout_constraintTop_toBottomOf="@+id/world_stats_label" />
@@ -61,7 +61,7 @@
                 app:layout_constraintStart_toEndOf="@+id/recovered_image"
                 app:layout_constraintTop_toTopOf="@+id/recovered_image"
                 app:maskValue="@{String.valueOf(coronaState.recovered)}"
-                app:appendText='@{"Recovered cases"}'
+                app:appendText='@{@string/recovered_cases}'
                 tools:text="xx.xxx Recovered cases" />
 
             <ImageView
@@ -85,7 +85,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/death_image"
                 app:layout_constraintStart_toEndOf="@+id/death_image"
                 app:layout_constraintTop_toTopOf="@+id/death_image"
-                app:appendText='@{"Fatal cases"}'
+                app:appendText='@{@string/fatal_cases}'
                 tools:text="xx.xxx Fatal cases"
                 app:maskValue="@{String.valueOf(coronaState.deaths)}" />
 

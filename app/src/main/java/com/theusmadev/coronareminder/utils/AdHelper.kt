@@ -8,7 +8,6 @@ import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.theusmadev.coronareminder.BuildConfig
-import com.theusmadev.coronareminder.R
 
 class AdHelper(val context: Context) {
 

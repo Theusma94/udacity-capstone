@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Corona Reminder</string>
+    <string name="corona_logo">CORONA</string>
+    <string name="reminder_logo">Reminder</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Senha</string>
+    <string name="sign_in">login</string>
+    <string name="create_acc_text">Não possui uma conta?</string>
+    <string name="sign_in_error">Erro ao logar</string>
+    <string name="create_an_account">Registrar</string>
+    <string name="full_name_hint">Nome completo</string>
+    <string name="register_user_error">Erro ao registrar!</string>
+    <string name="all_the_world">Todo o mundo</string>
+    <string name="change_country">Mudar</string>
+    <string name="see_more_about_country">Ver mais</string>
+    <string name="try_again">Tentar novamente</string>
+    <string name="going_somewhere_hint">Indo para onde?</string>
+    <string name="create">Criar</string>
+    <string name="reminder_created">Lembrete criado!</string>
+    <string name="error_on_create_reminder">Erro ao criar lembrete</string>
+    <string name="title_detail">Indo para %1$s?</string>
+    <string name="error_parse">ERROR ON PARSE DATA</string>
+    <string name="dashboard_menu">Dashboard</string>
+    <string name="create_menu">Criar</string>
+    <string name="history_menu">Histórico</string>
+    <string name="logout_menu">Logout</string>
+    <string name="calendar_circle_shape_description">formato circular do calendário</string>
+    <string name="calendar_icon_description">icone do calendário</string>
+    <string name="google_icon_for_sign_in_with_google_description">icone do google</string>
+    <string name="covid_recommendation_use_mask_description">recomendação de usar mascara covid</string>
+    <string name="covid_recommendation_clean_disinfect_description">recomendação alcool gel covid</string>
+    <string name="covid_recommendation_wash_hands_description">recomendação de lavar as mãos covid</string>
+    <string name="covid_recomendation_keep_distance_description">recomendação de manter distancia covid</string>
+    <string name="covid_recommendation_avoid_touching_description">recomendação de evitar o contato covid</string>
+    <string name="covid_recommendation_stay_home_if_seek_description">recomendação de ficar em casa se estiver doente covid</string>
+    <string name="refer_api">Os dados sobre Corona vírus foram retirados <a href="https://github.com/M-Media-Group/Covid-19-API">desta</a> Api</string>
+    <string name="corona_stats_label">STATUS CORONA</string>
+    <string name="confirmed_cases">Casos confirmados</string>
+    <string name="recovered_cases">Casos recuperados</string>
+    <string name="fatal_cases">Casos fatais</string>
+    <string name="forgot_password">Esqueceu a senha?</string>
+    <string name="about_api">Sobre a API</string>
+    <string name="reset_password_title">Redefinir senha</string>
+    <string name="email_forgot_hint">Insira seu email</string>
+    <string name="message_reset_password_success">Email de redefinição enviado</string>
+    <string name="message_reset_password_fail">Erro ao enviar email de redefinição</string>
+</resources>
