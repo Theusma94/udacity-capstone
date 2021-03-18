@@ -62,7 +62,7 @@ class SignInViewModel: ViewModel() {
     }
 
     fun passwordReset(email: String) {
-        firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener {
+        firebaseAuth.sendPasswordResetEmail(email).addOnSuccessListener {
             _sendResetPassword.value = true
         }.addOnFailureListener {
             _sendResetPassword.value = false
