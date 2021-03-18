@@ -118,4 +118,10 @@ class CoronaRepository(
             coronaDatabase.coronaDao.deleteStates()
         }
     }
+
+    suspend fun clearCountryDatabase(dispatcher: CoroutineDispatcher = Dispatchers.IO) {
+        withContext(dispatcher) {
+            coronaDatabase.coronaDao.deleteCountries()
+        }
+    }
 }
